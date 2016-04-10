@@ -15,6 +15,13 @@ I think, scrapping through the query language gave me an indication of power of 
 
 recommendationEngineFriendsOfFriends.js 
    
+   
+   
 #Author
 #Vinit Anil Gaikwad
 #(SJSU ID 010739443)
+
+
+
+
+[![Stories in Ready](https://badge.waffle.io/jagrutipatil/Heroku-Shopping-Cart-AWS-NoSQL-Service.png?label=ready&title=Ready)](http://waffle.io/jagrutipatil/Heroku-Shopping-Cart-AWS-NoSQL-Service)
