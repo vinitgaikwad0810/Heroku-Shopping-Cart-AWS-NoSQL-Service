@@ -1,0 +1,62 @@
+Step 1:
+Cassandra requires that the Oracle Java SE Runtime Environment installed.
+
+Step 2 Installing Cassandra:
+echo "deb http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+
+The add the repository source:
+echo "deb-src http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+
+To avoid package signature warnings during package updates, add three public keys from the Apache Software Foundation.
+
+gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D
+gpg --export --armor F758CE318D77295D | sudo apt-key add -
+gpg --keyserver pgp.mit.edu --recv-keys 2B5C1B00
+gpg --export --armor 2B5C1B00 | sudo apt-key add -
+gpg --keyserver pgp.mit.edu --recv-keys 0353B12C
+gpg --export --armor 0353B12C | sudo apt-key add -
+
+Update the package
+sudo apt-get update
+
+Install Cassandra
+sudo apt-get install cassandra
+
+Step 3 Starting Cassandra:
+To start it, type:
+sudo service cassandra start
+
+To check Cassandra's status
+sudo service cassandra status
+
+If you are successful, you will see:
+Output
+* Cassandra is running
+
+
+Step 4 Connecting to the Cluster:
+If you were able to successfully start Cassandra, check the status of the cluster:
+sudo nodetool status
+
+In the output, UN means it's Up and Normal:
+
+Output
+Datacenter: datacenter1
+=======================
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address    Load       Tokens       Owns    Host ID                               Rack
+UN  127.0.0.1  142.02 KB  256          ?       205547d-7461-17e6-8dd2-0af57896f736  rack1
+
+Note: Non-system keyspaces don't have the same replication settings, effective ownership information is meaningless
+Then connect to it using its interactive command line interface cqlsh.
+cqlsh
+
+You will see it connect:
+Output
+Connected to Test Cluster at 127.0.0.1:9042.
+Use HELP for help.
+cqlsh>
+
+Type exit to quit:
+exit
