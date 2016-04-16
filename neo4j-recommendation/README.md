@@ -1,4 +1,17 @@
-# Neo4j Recommendation Engine for CMPE281 Shopping Cart Service
+# Neo4j -> Setup of a local instance of neo4j [DATE : Friday April 15, 2016]
+1. Open up your terminal/shell.
+2. Extract the contents of the archive, using:
+tar -xf <filecode>.
+For example,
+tar -xf neo4j-enterprise-2.3.1-unix.tar.gz 
+the top level directory is referred to as NEO4J_HOME
+Run Neo4j using,
+$NEO4J_HOME/bin/neo4j console
+Instead of ‘neo4j console’, you can use neo4j start to start the server process in the background.
+Visit http://localhost:7474 in your web browser.
+Change the password for the ‘neo4j’ account.
+
+# Neo4j -> Recommendation Engine for CMPE281 Shopping Cart Service [DATE : Friday April 9, 2016]
 
 My focus area is designing a recommender module which would pops out three or four products that current user is likely to buy. I came across this particular tutorial on the web  'http://neo4j.com/developer/guide-build-a-recommendation-engine/'. It nicely explains how 'neo4j' and it's property graph model helps in floating a quick recommendation engine, which will be able to suggest a user the movies fancied by his or her peers. Our shopping cart service will probably have some core products in the mongo-supported product catalog. A proposed recommendation engine, supported by a graph database like neo4j supports acquiring user surfing data, buidling an in-memory graph. You can query the same graph by writing in something called 'cypher query language'. 
 
@@ -15,6 +28,10 @@ I think, scrapping through the query language gave me an indication of power of 
 
 recommendationEngineFriendsOfFriends.js 
    
+
+
+
+
    
    
 #Author
