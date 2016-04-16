@@ -1,0 +1,7 @@
+Pre-requistes
+- Cassandra install
+- At leat one running cassandra instance
+- install cassandra-driver using command
+  npm install cassandra driver
+- install async module 
+  npm install async
