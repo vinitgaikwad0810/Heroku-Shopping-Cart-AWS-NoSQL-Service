@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shopping-Cart-login</title>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Shopping-Cart Management</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <form role="form">
+                        <div class="center">
+                            <div class="form-group">
+                                <label for="emailPhone">Email or Phone</label> 
+                                <input type="email" class="form-control input-sm" id="emailPhone"
+                                    placeholder="Email or Phone" ng-model="username">
+                            </div>
+                            </br>
+                            <div class="form-group">
+                                <label for="inputPassword">Password</label> <input
+                                    type="password" class="form-control input-sm"
+                                    id="inputPassword" placeholder="Password" ng-model="password">
+                            </div>
+                            <div class="checkbox">
+                                <label> <input type="checkbox"> Remember me
+                                </label>
+                            </div>
+                        </div>
+                        <div class="lt-right">
+                            <button type="submit" class="login-btn" ng-click="login()">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
