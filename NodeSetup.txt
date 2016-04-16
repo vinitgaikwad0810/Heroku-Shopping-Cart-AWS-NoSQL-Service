@@ -1,0 +1,71 @@
+
+Node JS Environment Setup:
+
+Follow the steps to setup an environment with working node JS application.
+
+1.  If you don't have, get latest Node.js or io.js
+
+2. Then install Nodeclipse CLI
+and Express with Express' application generator
+$ npm install -g nodeclipse
+$ npm install -g express
+$ npm install -g express-generator
+If you are going to use CoffeeScript, do
+$ npm install -g coffee-script
+
+3.  If you don't have, download & install JDK 8 from Oracle Java SE Downloads. For example "Java Platform (JDK) 8u45".
+There are issues with Java 7 and 6 #71 #72 .
+
+Note 0: If you don't know what version is used by Eclipse, check in Preferences -> Nodeclipse.
+The Eclipse most recommended way to configure what JDK to use is to configure in eclipse.ini.
+
+4.a Get Enide 2015 with all Nodeclipse plugins included.
+get and keep updated Enide 2015-7 
+
+
+INSTALLATION\UPDATE INSTRUCTIONS
+(for Eclipse or Enide [Studio])
+
+In short words, drag-and-drop   on Eclipse main toolbar and get Enide 2015 plugins.
+A) MARKETPLACE (RECOMMENDED WAY: A BIT QUICKER)
+
+1.  Start Eclipse.
+2. Drag and drop   into a running Eclipse (menu area) to install Nodeclipse.
+
+2.  Review the features that you are about to install. Click Next.
+3.  Read the license agreements,
+    and then select I accept the terms of the license agreements. Click Finish.
+4.  You will then be asked if you would like to restart Eclipse. Click Restart Now.
+5.  Switch to Node perspective (e.g. Window -> Open Perspective -> Other ... -> Node).
+6.  Now you are ready to develop Node.js applications with Nodeclipse!
+
+B) UPDATE SITE (BIGGER CHOICE)
+
+1.  Start Eclipse, then select Help > Install New Software...
+2.  Enter the update site URL into the Work with text box:
+    http://www.nodeclipse.org/updates/
+    or the one that is quicker but changes every release
+    http://dl.bintray.com/nodeclipse/nodeclipse/1.0.2f/
+    Select with checkbox what you want to install.(Don't Select all the features. Only those required for nodeJS )
+
+3.  Uncheck "Contact all updates site during install to find required software"
+    to make installation quicker.
+    Note that different Eclipse version have different behaviour for that checkbox.
+    Press the Enter key or Next button.
+4.  After a while depending of what you had and what you selected,
+    you should see the center box filled with Eclipse plugins to install.
+    Click Next.
+5.  Review the features that you are about to install. Click Next.
+6.  Read the license agreements,
+    and then select I accept the terms of the license agreements. Click Finish.
+7.  You will then be asked if you would like to restart Eclipse. Click Restart Now.
+8.  Switch to Node perspective (e.g. Window -> Open Perspective -> Other ... -> Node).
+9.  Now you are ready to develop Node.js applications with Nodeclipse and great tools!
+
+C) ARCHIVE (WHEN INTERNET IS SLOW, NOT STABLE OR INSTALLING MANY TIMES)
+
+zip archive has content identical to update p2 site
+
+0.  Download zip from SourceForge.
+1.  Start Eclipse.
+2.  Help -> Install New Software -> Add -> Archive.
