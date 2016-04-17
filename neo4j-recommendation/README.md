@@ -1,4 +1,4 @@
-# Neo4j -> Setup of a local instance of neo4j [DATE : Friday April 15, 2016]
+# Neo4j -> Setup of a local instance of neo4j [DATE : Friday April 16, 2016]
 1. Open up your terminal/shell.
 2. Extract the contents of the archive, using:
 tar -xf <filecode>.
@@ -10,6 +10,12 @@ $NEO4J_HOME/bin/neo4j console
 Instead of ‘neo4j console’, you can use neo4j start to start the server process in the background.
 Visit http://localhost:7474 in your web browser.
 Change the password for the ‘neo4j’ account.
+
+After setting up the neo4j REST server, I started to think about how our cloud-scaled store front would look like when it comes to the software-architecture. Professor had suggested that we must follow approaches discussed in 'The Practice of Cloud Administration' book from the curiculum. Hence, We decided to go with the most optimal of architectures, that is, four-tier web architecture. Architecure had an elastic load balancer open to the public with a PublicDNS of course and different front-end-server and app-server at the back.
+
+
+
+
 
 # Neo4j -> Recommendation Engine for CMPE281 Shopping Cart Service [DATE : Friday April 9, 2016]
 
