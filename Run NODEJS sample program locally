@@ -1,0 +1,31 @@
+To run a NodeJS program locally:
+
+Before you start with NodeJS program locally setup for NodeJS is needed.
+Perform Environment set up for NodeJS
+
+Run a sample program locally:
+
+1. Start Eclipse
+2. If you do not have Enide eclipse installed , install it.
+   Go to help
+   Search Enide
+   Install Enide 2015 (Make sure Node JS is installed and setup in you PC)
+3. Restart Eclipse
+4. Go to File -> New -> Other -> Select Node Express Project
+5. Write the project name, select Template Engine as "ejs" , Stylesheet Engine as "CSS"
+6. Click Finish.
+7. Basic Node Project is started.
+
+How to VERIFY?:
+
+1. Once Project folder is created, expand it and check for following folders:
+ node_modules
+ public
+ routes
+ views
+ app.js
+ package.json
+ README.md
+2. If the above folders get created , Node Js Project is properly created.
+3. If these folders are not seen, recheck for Node Settings.
+Follow above steps.

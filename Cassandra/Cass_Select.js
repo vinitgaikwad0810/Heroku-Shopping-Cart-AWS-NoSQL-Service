@@ -1,6 +1,6 @@
 var cassandra = require('cassandra-driver');
 var async = require('async');
-var client = new cassandra.Client({contactPoints: ['127.0.0.1'], keyspace: 'db275'});
+var client = new cassandra.Client({contactPoints: ['127.0.0.1'], keyspace: 'db281'});
 function select(callback) {
        client.execute("SELECT name FROM test WHERE id = 2", function (err, result) {
            if (!err){
