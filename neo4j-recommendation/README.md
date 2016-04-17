@@ -13,6 +13,12 @@ Change the password for the ‘neo4j’ account.
 
 After setting up the neo4j REST server, I started to think about how our cloud-scaled store front would look like when it comes to the software-architecture. Professor had suggested that we must follow approaches discussed in 'The Practice of Cloud Administration' book from the curiculum. Hence, We decided to go with the most optimal of architectures, that is, four-tier web architecture. Architecure had an elastic load balancer open to the public with a PublicDNS of course and different front-end-server and app-server at the back.
 
+So I am supposed to build a recommendation engine to support my front-end servers, I believe 'making it RESTful' would be a good option. So I decided to delve into the nodejs, express and building REST endpoints. I came across this nice tutorial on how to use express to for routing HTTP requests coming at your REST endpoint and how to write individual handlers for each.
+
+
+
+
+
 
 
 
