@@ -36,5 +36,3 @@ Example code:
       
    </body>
 </html>
-
-
