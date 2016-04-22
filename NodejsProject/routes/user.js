@@ -9,6 +9,18 @@ function redisTest() {
 	console.log(client.get('test'));
 }
 
+function saveSignupDetails(req, res) {
+	
+}
+
+function signup(req, res) {
+	ejs.renderFile("./views/signup.ejs", function(err, result) {
+		if (!err) {
+			res.end(result);
+		}
+	});
+}
+
 function home(req, res) {
 	ejs.renderFile("./views/login.ejs", function(err, result) {
 		if (!err) {
