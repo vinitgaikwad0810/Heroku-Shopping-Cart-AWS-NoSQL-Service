@@ -5,7 +5,16 @@ http://www.w3schools.com/angular/
 http://www.tutorialspoint.com/angularjs/
 
 Pre-requisites for Angular JS: Knowledge of JavaScript, HTML, CSS
-ANgular JS is used along with bootstrap to build web applications.
+Angular JS is used along with bootstrap to build web applications.
+
+In the example below, the link written in script tag is angular js file readily available from Google API. In order to use angular this link containing js file should be used.
+In angular : <html> tag is accompanied by ng-app which marks the start of angular code with html.
+Important tags in angular:
+1. ng-app
+2. ng-model
+3. ng-controller(will be used later)
+4. {{in order to print something}}
+
 
 Example code:
 
@@ -29,10 +38,3 @@ Example code:
 </html>
 
 
-In the above example, the link written in scrit tag is angular js file readily available from Google API. In order to use angular this link containing js file should be used.
-In angular : <html> tag is accompanied by ng-app which marks the start of angular code with html.
-Important tags in angular:
-1. ng-app
-2. ng-model
-3. ng-controller(will be used later)
-4. {{in order to print something}}
