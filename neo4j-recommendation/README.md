@@ -15,7 +15,9 @@ After setting up the neo4j REST server, I started to think about how our cloud-s
 
 So I am supposed to build a recommendation engine to support my front-end servers, I believe 'making it RESTful' would be a good option. So I decided to delve into the nodejs, express and building REST endpoints. I came across this nice tutorial on how to use express to for routing HTTP requests coming at your REST endpoint and how to write individual handlers for each.
 
+Please have a look at the 'restful' folder on git (https://github.com/cmpe281-team4/Heroku-Shopping-Cart-AWS-NoSQL-Service/tree/master/neo4j-recommendation/restful). I was able to build a quick REST endpoint in matter of minutes. 
 
+Next week, I plan to make major progress in terms writing simple relevant CYPHER queries and building up the REST infrastructure. We have realised we need to not only concetrate on our focus area, but also other areas.
 
 
 
