@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang = "en" >
+  <head>
+  <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+   <script src = "./demo_angu.js"></script>
+  </head>
+  <body>
+  
+  <div ng-app = "ToDo" ng-controller = "todoController">
+   <form name="form" ng-submit = "addname()">
+  	<input type="text" name = "name" ng-model = "newName" required/>
+   	<button ng-disabled="form.$invalid">Enter</button>
+  </form>
+ <button ng-model = 'clear' ng-click = "lastname()">Clear the value</button> 
+  <ul>
+  	<li ng-repeat = "todo in todos">
+  		<input type="checkbox" ng-model = "todo.done"/>
+  		<span ng-class="{'done' : todo.done}"> {{todo.title}} </span>	
+  	</li>
+  </ul>
+  
+  </div>
+   
+   
+  </body>
+</html>
