@@ -1,6 +1,8 @@
 //Let’s load the request module
 var request = require("request");
 var http = require('http');
+var express = require('express');
+var app = express();
 
 var map = {};
 map[1] = "16";
@@ -25,53 +27,68 @@ function runCypherQuery(query, params, callback) {
     })
 }
 
+function returnValue(err, tobeReturned){
+	
+    if (err) {
+      console.log(err);
+    } 
+   
+     return tobeReturned;
+}
+
 function runGetAllOutgoingRelationships(nodeId,callback){
 
 	var getUrl = "http://localhost:7474/db/data/node/"+nodeId+"/relationships/out";
-	/*
-	console.log(getUrl)
+
+	var recommendations = {}
+	request.get(getUrl)
+	.on('response',function(response) {
+	    console.log(response.statusCode) // 200
+	    console.log(response.headers['content-type']) // 'image/png'
+	    var body = '';
+	      response.on('data', function (chunk) {
+	     body += chunk;
+	  })
+	      response.on('end', function (){
+	      	var parsed = JSON.parse(body);
+	      	
+	      	for(var i=0; i< parsed.length; i++)
+			{
+			//console.log(getProductNoFromNeo4jServer(parsed[i].end,returnValue))
+     		  getProductNoFromNeo4jServer(parsed[i].end,callback)	
+			}
+			
+				
+	      })
+	  })
+
+}
+
+
+
+function getProductNoFromNeo4jServer(url,callback){
+
+console.log(url);
+var productNo='';	
+
+	request.get(url)
+	.on('response',function(response) {
+	  //  console.log(response.statusCode) // 200
+	   // console.log(response.headers['content-type']) // 'image/png'
+	    var body = '';
+	      response.on('data', function (chunk) {
+	     body += chunk;
+	  })
+	      response.on('end', function (){
+
+	      	var parsed = JSON.parse(body);
+	      	productNo = parsed.data.productNo;
+	      	console.log("productNo is" + productNo)
+	      	callback(null,productNo);
+	     
+	      		      })
+	  })
 	
-	http.get(getUrl,function callback(response) {
-   		console.log(response) 
-   		  response.setEncoding('utf8');
-     //console.log(response.headers['content-type']) 
-      response.on('data', function(data) {
-        totalString += data.toString();
-    })
-     response.on('end',function(){
-     	console.log(totalString)
-
-     	var parsed = JSON.parse(totalString);
-		console.log("RELATIONSHIP FOUND :"+parsed.type);
-		
-     })
-  })*/
-/*
-var totalString = '';
-request(getUrl, function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    console.log(body) // Show the HTML for the Google homepage. 
-	convertHTTPResponseToJSON(body);
-  }
-  else {
-    console.log("Error "+response.statusCode)
-  }
-})*/
-
-request.get(getUrl)
-.on('response',function(response) {
-    console.log(response.statusCode) // 200
-    console.log(response.headers['content-type']) // 'image/png'
-    var body = '';
-      response.on('data', function (chunk) {
-     body += chunk;
-  })
-      response.on('end', function (){
-      	convertHTTPResponseToJSON(body);
-      })
-  })
-
-
 }
 
 function convertHTTPResponseToJSON(body){
@@ -100,11 +117,15 @@ runCypherQuery(
   }
 );*/
 
-runGetAllOutgoingRelationships(map[1],function (err, resp) {
+var recommendations= runGetAllOutgoingRelationships(map[1],function (err, recommendations) {
     if (err) {
       console.log(err);
     } else {
-      console.log(resp);
+   		
+      console.log(recommendations);
+
     }
   });
+
+
 
