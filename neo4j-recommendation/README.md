@@ -1,3 +1,30 @@
+# Neo4j -> Development, Coding and Testing Activity [DATE: Saturday April 23, 2016]
+
+We have setup the local instance of Neo4j, graph database last time around. Architecture was decided to be REST. I believe my individual preparation for my part is going strong. It is time to interact with my fellow team members for the interfaces. Unmesh and Preeti are working on Heroku-Front End and Mongo product catalog. Questions needed to be answered,
+
+What does Front-End Server need exactly along with 'ProductNo's for the recommendations rendering?
+
+Does recommendation server needs to store information regarding the product?
+
+Mongo DB instances are supposed to be holding the information about the products? If yes, is it feasible to go to Catalog Server everytime a new product has been recommended for rendering on the UI? Otherwise, we could have minimal information in Neo4J recommendation Server.
+
+As of Now, I have decided to go with following Node model.
+
+"...productCost	21
+productNo	2
+productName	Chelsea Jersey...
+
+With this, I could implement server-side logic which can be extended to handle more fields (Or less If I have my way).
+
+If someone buys a Chelsea jersey, we must recommended him Tottenham-related stuff. Two nodes are related by RECOMMENDS relationship. Following is the CREATE script for such relations.
+
+MATCH (product_3:Product_3),(product_1:Product_1)
+CREATE (product_3)-[like:RECOMMENDS ]->(product_1)
+RETURN like
+
+This would be the basis for further development. 
+
+
 # Neo4j -> Setup of a local instance of neo4j [DATE : Friday April 16, 2016]
 1. Open up your terminal/shell.
 2. Extract the contents of the archive, using:
