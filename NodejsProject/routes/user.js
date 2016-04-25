@@ -9,7 +9,9 @@ function redisTest() {
 	console.log(client.get('test'));
 }
 
-function saveSignupDetails(req, res) {
+function saveSignupDetails(req, res) {	
+	client.set("username", req.param("username"));
+	client.set("password", req.param("password"));
 	
 }
 
