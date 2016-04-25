@@ -31,6 +31,19 @@ function home(req, res) {
 	});
 }
 
+function authenticate(req, res) {
+	var usernameGot = req.param("username");
+	var passwordGot = req.param("password");
+	
+	if (client.get("username") == usernameGot && client.get("password") == passwordGot) {
+		var json = "{'status', '200'}";
+		res.send(json);
+	} else {
+		res.send("{'status', '400'}");
+	}
+}
+
+
 exports.list = function(req, res){
   res.send("respond with a resource");
 };
