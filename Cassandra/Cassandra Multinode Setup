@@ -1,0 +1,44 @@
+Initializing multiple node Cassandra cluster (Single Data Center)
+
+Following is the procedure to create a multiple node Cassandra cluster:
+
+Nodes must be correctly configured to run multiple node Cassandra cluster.
+  1.	Install Cassandra on each node.
+  2.	Determine name of the Cassandra cluster.
+  3.	Get IP address for each node.
+  4.	Determine which nodes should be seeds. (Do not make every node as seed)
+      a.	SimpleStrategy
+      b.	NetworkTopologyStrategy
+  5.	Determine Snitch
+      a.	DynamicSnitch
+      b.	SimpleSnitch
+      c.	RackInferringSnitch
+      d.	PropertyFileSnitch
+      e.	GossipingPropertyFileSnitch
+      f.	Ec2Snitch
+      g.	Ec2MultiRegionSnitch
+      h.	GoogleCloudSnitch
+      i.	CloudstackSnitch
+  6.	Determine replication strategy.
+  Following is the example of a three node cluster:
+  •	Suppose you have three nodes to be connected into a Cassandra cluster:
+      o	node0 110.82.155.0 (seed1)
+      o	node1 110.82.155.1
+      o	node2 110.82.156.2 (seed2)
+  •	Open the following ports:
+      o	22
+      o	8888
+      o	7000
+      o	7001
+      o	7199
+      o	9042
+      o	9160
+      o	61620
+      o	61621
+  •	If Cassandra is running stop the server using:
+    sudo service Cassandra stop
+  Clear the data
+  	sudo rm –rf /var/lib/Cassandra/data/system/*
+  •	Set properties of Cassandra using cassandra.yaml file
+  •	Restart  Cassandra
+    sudo service Cassandra start
