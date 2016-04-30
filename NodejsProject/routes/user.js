@@ -48,5 +48,6 @@ exports.list = function(req, res){
   res.send("respond with a resource");
 };
 
+exports.authenticate = authenticate;
 exports.redisTest = redisTest; 
 exports.home = home;
