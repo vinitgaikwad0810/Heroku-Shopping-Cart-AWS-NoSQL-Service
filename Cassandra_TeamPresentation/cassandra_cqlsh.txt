@@ -1,0 +1,95 @@
+Replication factor −> 
+It is the number of machines in the cluster that will receive copies of the same data.
+
+Replica placement strategy −> 
+It is nothing but the strategy to place replicas in the ring. We have strategies such as simple strategy (rack-aware strategy), old network topology strategy (rack-aware strategy), and network topology strategy (datacenter-shared strategy).
+
+Column families −> 
+Keyspace is a container for a list of one or more column families. A column family, in turn, is a container of a collection of rows. Each row contains ordered columns. Column families represent the structure of your data. Each keyspace has at least one and often many column families.
+__________________________________________________________________________________________________________________
+//Create Keyspace 
+create keyspace testdb with replication = {'class' : 'SimpleStrategy', 'replication_factor' :3};
+____________________________________________________________________________________________________________________
+//Show all keyspaces
+describe keyspaces;
+
+//display properties
+select * from system.schema_keyspaces;
+_____________________________________________________________________________________________________________________
+//using keyspaces
+ use testdb;
+______________________________________________________________________________________________________________________
+//alter keyspaces
+
+alter keyspace testdb with replication = {'class':'SimpleStrategy', 'replication_factor':5};
+______________________________________________________________________________________________________________________
+//Drop KeySpaces
+
+drop keyspace testdb;
+________________________________________________________________________________________________________________________________
+
+//CREATE TABLE
+
+create table emp (emp_id int PRIMARY KEY,
+		 emp_name text,
+		 emp_city text,
+		 emp_address text,
+		 emp_phone varint
+		);
+_______________________________________________________________________________________________________________________________
+
+//SELECT ALL FROM TABLE
+
+ select * from emp;
+________________________________________________________________________________________________________________________________
+
+//ALTER TABLE - ADD COLUMN
+
+alter table emp add emp_email text;
+
+
+//ALTER TABLE- DROP COLUMN
+ alter table emp drop emp_email;
+__________________________________________________________________________________________________________________________________
+
+//INSERT QUERY [CREATE DATA]
+insert into emp (emp_id, emp_address, emp_city, emp_name, emp_phone) values (1, '101 E San Fernando', 'San Jose', 'Jagruti', 6692589999);
+
+insert into emp (emp_id, emp_address, emp_city, emp_name, emp_phone) values (2, '101 E San Fernando', 'San Jose', 'XYZ', 6692589998);
+___________________________________________________________________________________________________________________________________
+
+//UPDATE QUERY [UPDATE DATA]
+ update emp set emp_address = 'Almeda' where emp_id=1;
+___________________________________________________________________________________________________________________________________
+// SELECT ALL [READ DATA]
+
+select * from emp;
+
+//PARTICULAR COLUMN SELECT
+select emp_address from emp where emp_id =2;
+
+___________________________________________________________________________________________________________________________________
+
+//DELETE QUERY []
+
+//DELETE PARTICULAR COLUMN
+delete emp_city from emp where emp_id=1;
+
+//DELETE ROW
+delete from emp where emp_id=1;
+___________________________________________________________________________________________________________________________________
+
+//SHOW ALL TABLES
+describe columnfamilies;
+___________________________________________________________________________________________________________________________________
+
+//TRUNCATE TABLE
+truncate emp;
+__________________________________________________________________________________________________________________________________
+
+//DROP TABLE
+drop table emp;
+
+
+
+
