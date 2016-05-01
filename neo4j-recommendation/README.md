@@ -1,3 +1,50 @@
+# Neo4j -> Product Catalog Decision                                   [DATE: Saturday April 30, 2016]
+
+Now that I have my Neo4J recommemendation server up and running. It was time to work on a focus area which was not take by any member of the team. However, We still wanted to have that area. I am talking about Mongo powered catalog. We had team meeting yesterday about it. It was decided to have Product Schema in Mongo Server. Mongo Server would be part of the data base layer.
+
+I started looking at the resources on the web. for the product catalog design. The schema must contain general product information. 
+
+
+{
+  sku: "00e8da9b",
+  type: "Football Kit",
+  title: "Man United Jersey",
+  description: "by Sir Alex Ferguson",
+  asin: "B0000A118M",
+
+  shipping: {
+    weight: 10,
+    dimensions: {
+      width: 50,
+      height: 40,
+      depth: 2
+    },
+  },
+
+  pricing: {
+    list: 125,
+    retail: 110,
+    savings: 10,
+    pct_savings: 10
+  },
+
+  details: {
+    title: "Manchester United is one of the largest club in the world",
+    artist: "Sir Alex Ferguson",
+   
+        ...
+    Related Products: [
+      "Tottenham Jersey",
+      "Leceister Jersey"
+    ],
+  },
+}
+
+
+The Schema has related products. We have Neo4J to dynamically find related products. So that will probably not be necessary. We have also given a thought about having 
+
+
+
 # Neo4j -> Development, Coding and Testing Activity [DATE: Saturday April 23, 2016]
 
 We have setup the local instance of Neo4j, graph database last time around. Architecture was decided to be REST. I believe my individual preparation for my part is going strong. It is time to interact with my fellow team members for the interfaces. Unmesh and Preeti are working on Heroku-Front End and Mongo product catalog. Questions needed to be answered,
