@@ -41,7 +41,7 @@ I started looking at the resources on the web. for the product catalog design. T
 }
 
 
-The Schema has related products. We have Neo4J to dynamically find related products. So that will probably not be necessary. We have also given a thought about having Cassandra as for product catalog. As part of extra credit, we had to present Cassandra Architecture. Professor had told us to demonstrate the AP or CP properties of the database. We had setup Two node Cluster to showcase eventual consistency and replication.
+The Schema has related products. We have Neo4J to dynamically find related products. So that will probably not be necessary. We have also given a thought about having Cassandra as for product catalog. As part of extra credit, we had to present Cassandra Architecture. Professor had told us to demonstrate the AP or CP properties of the database. We had setup Two node Cluster to showcase eventual consistency and replication. Since Mongo is more towards consistency. We decided to go with Mongo.
 
 
 
