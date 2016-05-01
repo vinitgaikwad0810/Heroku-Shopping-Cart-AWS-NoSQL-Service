@@ -19,6 +19,14 @@ app.get('/metadata', function(req, res) {
     }));
 });
 
+app.get('/emp/:id', function(req, res) {
+    client.execute('SELECT * FROM testkeyspace.emp where id ='+id,[], function(err, result) {
+        if (err) {
+            res.status(404).send({ msg : 'Emp not found.' });
+        } else {
+            res.json(result);        }
+    });
+});
 
 app.get('/emp/', function(req, res) {
     client.execute(getEmps,[], function(err, result) {
