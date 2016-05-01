@@ -1,0 +1,58 @@
+1.Add resources/log4j-appender/lib/ to your application classpath.
+2.Modify the conf/log4j.properties file, as shown below:
+    # Cassandra Appender
+    log4j.appender.CASS = com.datastax.logging.appender.CassandraAppender
+    log4j.appender.CASS.hosts = 127.0.0.1
+    log4j.appender.CASS.port = 9160
+    #log4j.appender.CASS.appName = "myApp" 
+    #log4j.appender.CASS.keyspaceName = "Logging" #log4j.appender.CASS.columnFamily = "log_entries" 
+    #log4j.appender.CASS.placementStrategy = 
+   "org.apache.cassandra.locator.NetworkTopologyStrategy" 
+    #log4j.appender.CASS.strategyOptions = {"DC1" : "1", "DC2" : "3" } 
+    #log4j.appender.CASS.replicationFactor = 1 
+    #log4j.appender.CASS.consistencyLevelWrite = ONE 
+    #log4j.appender.CASS.maxBufferedRows = 256
+    
+    log4j.logger.com.foo.bar = INFO, CASS
+
+
+log4j.appender.CASS=com.datastax.logging.appender.CassandraAppender specifies the CassandraAppender class and assigns it the CASS alias. This alias is referenced in the last line.
+log4j.appender.CASS.hosts = 127.0.0.1 allows using a comma delimited list of Cassandra nodes (in case a node goes down).
+Specify replication options in:
+log4j.appender.CASS.placementStrategy = "org.apache.cassandra.locator.NetworkTopologyStrategy" log4j.appender.CASS.strategyOptions = {"DC1" : "1", "DC2" : "3" }.
+log4j.logger.com.foo.bar = INFO, CASS specifies that all log messages of level INFO and higher, which are generated from the classes and sub-packages within the com.foo.barpackage, are sent to the Cassandra server by the Appender.
+By default, the CassandraAppender records log messages in the table log_entries in the Logging keyspace. The definition of this table is as follows:
+
+cqlsh:Logging> DESCRIBE TABLE log_entries;
+
+CREATE TABLE log_entries (
+  KEY uuid PRIMARY KEY,
+  app_start_time bigint,
+  app_name text,
+  class_name text,
+  file_name text,
+  level text,
+  line_number text,
+  log_timestamp bigint,
+  logger_class_name text,
+  host_ip text,
+  host_name text,
+  message text,
+  method_name text,
+  ndc text,
+  thread_name text,
+  throwable_str_rep text
+) WITH
+  comment = '' AND
+  comparator = text AND
+  row_cache_provider = 'ConcurrentLinkedHashCacheProvider' AND
+  key_cache_size = 200000.000000 AND
+  row_cache_size = 0.000000 AND
+  read_repair_chance = 1.000000 AND
+  gc_grace_seconds = 864000 AND
+  default_validation = text AND
+  min_compaction_threshold = 4 AND
+  max_compaction_threshold = 32 AND
+  row_cache_save_period_in_seconds = 0 AND
+  key_cache_save_period_in_seconds = 14400 AND
+  replication_on_write = True;
