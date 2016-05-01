@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var cassandra = require('cassandra-driver');
 
 var getEmps = 'SELECT * FROM testkeyspace.emp';
+var deleteEmps = 'Delete * FROM testkeyspace.emp where id=';
 
 var client = new cassandra.Client( { contactPoints : [ '127.0.0.1' ] } );
 client.connect(function(err, result) {
@@ -21,6 +22,15 @@ app.get('/metadata', function(req, res) {
 
 app.get('/emp/:id', function(req, res) {
     client.execute('SELECT * FROM testkeyspace.emp where id ='+id,[], function(err, result) {
+        if (err) {
+            res.status(404).send({ msg : 'Emp not found.' });
+        } else {
+            res.json(result);        }
+    });
+});
+
+app.delete('/emp/:id', function(req, res) {
+    client.execute("deleteEmps"+id,[], function(err, result) {
         if (err) {
             res.status(404).send({ msg : 'Emp not found.' });
         } else {
