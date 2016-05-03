@@ -7,6 +7,13 @@ var express = require('express'),
         password : 'root',
         database : 'test'
     });
+var bodyParser = require('body-parser');
+
+//configure the app to use bodyParser()
+app.use(bodyParser.urlencoded({
+ extended: true
+}));
+app.use(bodyParser.json());
 
 // get all users
 app.get('/listusers', function(req,res){
@@ -67,7 +74,6 @@ app.get('/listusers/:id', function(req,res){
                         res.send({
                             result: 'success',
                             err:    '',
-                            id:     req.params.id,
                             json:   rows[0],
                             length: 1
                         });
@@ -105,7 +111,6 @@ app.get('/getpassword/:uname', function(req,res){
                         res.send({
                             result: 'success',
                             err:    '',
-                            id:     req.params.id,
                             json:   rows[0],
                             length: 1
                         });
@@ -120,7 +125,7 @@ app.get('/getpassword/:uname', function(req,res){
 
 
 
-app.post('/newuser', function(req,res){
+app.post('/newuserwithid', function(req,res){
 	connectionpool.getConnection(function(err, connection) {
         if (err) {
             console.error('CONNECTION error: ',err);
@@ -130,9 +135,9 @@ app.post('/newuser', function(req,res){
                 err:    err.code
             });
         } else {
-            var data = JSON.parse(req.body);
-            console.log(data);
-                connection.query('INSERT INTO login (id, fname, lname, username, password, mobilno) VALUES (' + connection.escape(data.id) + ',' + connection.escape(data.fname) + ', ' + connection.escape(data.lname) + ',' + connection.escape(data.uname) + ',' + connection.escape(data.password) + ',' + connection.escape(data.mobileno) + ')', function(err, result) {
+        	var data = req.body;
+        	console.log(req);
+                connection.query('INSERT INTO login (id, fname, lname, username, password, mobilno) VALUES (' + data.id + ',\"' + data.fname + '\", \"' + data.lname + '\",\"' + data.uname + '\",\"' + data.password + '\",\"' + data.mobileno + '\")', function(err, result) {
                     if (err) {
                         console.error(err);
                         res.statusCode = 500;
@@ -144,7 +149,38 @@ app.post('/newuser', function(req,res){
                         res.send({
                             result: 'success',
                             err:    '',
-                            id:     result.insertId
+                        });
+                    }
+                    connection.release();
+                });
+            }
+	});
+                
+});
+
+app.post('/newuser', function(req,res){
+	connectionpool.getConnection(function(err, connection) {
+        if (err) {
+            console.error('CONNECTION error: ',err);
+            res.statusCode = 503;
+            res.send({
+                result: 'error',
+                err:    err.code
+            });
+        } else {
+        	var data = req.body;
+                connection.query('INSERT INTO login (fname, lname, username, password, mobilno) VALUES (\"' + data.fname + '\", \"' + data.lname + '\",\"' + data.uname + '\",\"' + data.password + '\",\"' + data.mobileno + '\")', function(err, result) {
+                    if (err) {
+                        console.error(err);
+                        res.statusCode = 500;
+                        res.send({
+                            result: 'error',
+                            err:    err.code
+                        });
+                    } else {
+                        res.send({
+                            result: 'success',
+                            err:    '',
                         });
                     }
                     connection.release();
