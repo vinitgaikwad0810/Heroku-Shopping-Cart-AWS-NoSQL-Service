@@ -189,7 +189,133 @@ app.post('/newuser', function(req,res){
 	});
                 
 });
-app.put('/:table/:id', function(req,res){});
-app.delete('/:table/:id', function(req,res){});
+app.put('/updatepass', function(req,res){
+	connectionpool.getConnection(function(err, connection) {
+        if (err) {
+            console.error('CONNECTION error: ',err);
+            res.statusCode = 503;
+            res.send({
+                result: 'error',
+                err:    err.code
+            });
+        } else {
+        	var data = req.body;
+                connection.query('UPDATE login SET password= \"'+ data.password +'\" WHERE uname =\"' + data.uname + '\"', function(err, result) {
+                    if (err) {
+                        console.error(err);
+                        res.statusCode = 500;
+                        res.send({
+                            result: 'error',
+                            err:    err.code
+                        });
+                    } else {
+                        res.send({
+                            result: 'success',
+                            err:    '',
+                        });
+                    }
+                    connection.release();
+                });
+            }
+	});
+});
+
+app.put('/updatemobile', function(req,res){
+	connectionpool.getConnection(function(err, connection) {
+        if (err) {
+            console.error('CONNECTION error: ',err);
+            res.statusCode = 503;
+            res.send({
+                result: 'error',
+                err:    err.code
+            });
+        } else {
+        	var data = req.body;
+                connection.query('UPDATE login SET mobilno= \"'+ data.mobileno +'\" WHERE uname =\"' + data.uname + '\"', function(err, result) {
+                    if (err) {
+                        console.error(err);
+                        res.statusCode = 500;
+                        res.send({
+                            result: 'error',
+                            err:    err.code
+                        });
+                    } else {
+                        res.send({
+                            result: 'success',
+                            err:    '',
+                        });
+                    }
+                    connection.release();
+                });
+            }
+	});
+});
+
+app.put('/updatename', function(req,res){
+	connectionpool.getConnection(function(err, connection) {
+        if (err) {
+            console.error('CONNECTION error: ',err);
+            res.statusCode = 503;
+            res.send({
+                result: 'error',
+                err:    err.code
+            });
+        } else {
+        	var data = req.body;
+                connection.query('UPDATE login SET fname= \"'+ data.fname+'\" , lname=\"'+ data.lname +'\" WHERE uname =\"' + data.uname + '\"', function(err, result) {
+                    if (err) {
+                        console.error(err);
+                        res.statusCode = 500;
+                        res.send({
+                            result: 'error',
+                            err:    err.code
+                        });
+                    } else {
+                        res.send({
+                            result: 'success',
+                            err:    '',
+                        });
+                    }
+                    connection.release();
+                });
+            }
+	});
+});
+
+app.delete('/userlist/:id', function(req,res){
+	connectionpool.getConnection(function(err, connection) {
+        if (err) {
+            console.error('CONNECTION error: ',err);
+            res.statusCode = 503;
+            res.send({
+                result: 'error',
+                err:    err.code
+            });
+        } else {
+            connection.query('DELETE FROM login WHERE id = '+connection.escape(req.params.id), function(err, rows) {
+                if (err) {
+                    console.error(err);
+                    res.statusCode = 500;
+                    res.send({
+                        result: 'error',
+                        err:    err.code
+                    });
+                }else {
+                    if (rows.length === 0){
+                        res.statusCode = 204;
+                    } else {
+                        res.send({
+                            result: 'success',
+                            err:    '',
+                            json:   rows[0],
+                            length: 1
+                        });
+                    }
+                    connection.release();
+                }
+            });
+        }
+    });
+});
 app.listen(8888);
 console.log('Rest Demo Listening on port 8888');
