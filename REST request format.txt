@@ -1,0 +1,25 @@
+MySQL Login:
+      Creating a new User:
+      
+          {
+            "fname" : "abc",
+            "lname" : "def",
+            "uname" : "asdw@aas.com",
+            "password" : "xxxxxxxx",
+            "mobileno" : "9999999999999"
+          }
+          
+          
+      Update password:
+      
+          {
+            "uname" : "asdw@aas.com",
+            "password" : "xxxxxxxx",
+          }
+          
+      Update Mobile number:
+      
+          {
+            "uname" : "asdw@aas.com",
+            "mobileno" : "9999999999999"
+          }
