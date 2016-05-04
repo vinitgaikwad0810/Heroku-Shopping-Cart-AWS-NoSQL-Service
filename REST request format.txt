@@ -23,3 +23,36 @@ MySQL Login:
             "uname" : "asdw@aas.com",
             "mobileno" : "9999999999999"
           }
+
+          
+Cassandra logging format:
+		Trace message:
+			{
+			    "level" : "trace", 
+			    "message" : "trace Message"
+			}
+		Debug message:
+			{
+			    "level" : "debug", 
+			    "message" : "Debug Message"
+			}
+		info message:
+			{
+			    "level" : "info", 
+			    "message" : "Info Message"
+			}
+		warn message:
+			{
+			    "level" : "warn", 
+			    "message" : "Warn Message"
+			}
+		error message:
+			{
+			    "level" : "error", 
+			    "message" : "Error Message"
+			}
+		fatal message:
+			{
+			    "level" : "fatal", 
+			    "message" : "fatal Message"
+			}

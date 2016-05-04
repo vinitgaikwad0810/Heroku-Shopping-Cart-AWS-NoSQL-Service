@@ -314,7 +314,6 @@ app.delete('/userlist/:id', function(req,res){
                         res.send({
                             result: 'success',
                             err:    '',
-                            json:   rows[0],
                             length: 1
                         });
                     }
