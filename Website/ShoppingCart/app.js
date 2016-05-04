@@ -33,12 +33,14 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/index',index.index);
 app.get('/account',index.account);
 app.get('/contact',index.contact);
 app.get('/checkout',index.checkout);
 app.get('/products',index.products);
 app.get('/register',index.register);
-app.get('/single',index.single	);
+app.get('/single',index.single);
+app.get('/typography',index.typography);
 app.post('/registerUser');
 app.post('/login',login.login);
 app.use(function(req, res, next) {

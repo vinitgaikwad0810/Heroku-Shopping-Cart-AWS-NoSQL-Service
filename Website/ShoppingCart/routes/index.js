@@ -24,3 +24,6 @@ exports.products = function(req, res){
 exports.single = function(req, res){
 	 res.render('single', { title: 'Express' });
 };
+exports.typography = function(req, res){
+	 res.render('typography', { title: 'Express' });
+};
