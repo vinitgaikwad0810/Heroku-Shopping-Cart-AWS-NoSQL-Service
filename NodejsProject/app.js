@@ -35,6 +35,7 @@ app.get('/home', user.home);
 app.post('/authenticate', user.authenticate);
 app.get('/users', user.list);
 app.get('/charts', user.charts);
+app.post('/addToCart', user.addProductToCards);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
