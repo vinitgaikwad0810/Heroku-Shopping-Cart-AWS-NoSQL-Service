@@ -108,9 +108,9 @@ a.simpleCart_empty {
     letter-spacing: 2px;
 }
 .logo a span {
-	color: #816263;
+	color: #0C214E;
     font-size: 35px;
-    border: 2px solid #816263;
+    border: 2px solid #1B7CCA;
     border-radius: 50%;
     width: 50px;
     display: block;
@@ -1454,7 +1454,7 @@ ul.women_pagenation li.active a, ul.women_pagenation li a:hover {
     font-weight: 600;
 }
 li.home a {
-    color: #816263;
+    color: #1B7CCA;
     font-size: 16px;
 }
 .login-left p, .login-right p {
@@ -1662,7 +1662,7 @@ ul.women_pagenation li a:hover{
 }
 .reg ul li.text-info{
 	width: 38%;
-	color: #816263;
+	color: #1B7CCA;
 	font-size: 16px;
 	text-transform: uppercase;
 	margin: 0 0 0px 0;
@@ -1705,7 +1705,7 @@ p.click a:hover{
 	cursor: pointer;
 	font-weight: 500;
 	margin: 0 0 32px 0;
-	background: #816263;
+	background: #1B7CCA;
 	border-top: none;
 	border-left: none;
 	border-right: none;

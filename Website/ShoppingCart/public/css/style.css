@@ -801,7 +801,7 @@ ul.product-list li a:hover{
 }
 .product-listy h2{
 	color: #fff;
-    background: #816263;
+    background: #146DB5;
     font-size: 15px;
     padding: 23px;
     font-weight: 600;
@@ -819,7 +819,7 @@ ul.product-list li a:hover{
 .offer p{
 	font-size:30px;
 	color:#fff;
-	background:rgba(129, 98, 99, 0.73);
+	background:#1B7CCA;
 	padding: 15px 8px;
 	border-radius:50%;
 	-webkit-border-radius:50%;
