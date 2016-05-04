@@ -9,11 +9,24 @@ function addProductToCard(req, res) {
 	var username = req.param("username");
 	var productId = req.param("productId");
 	
-	var pArrayJSON = client.get(username);
-	var array = JSON.parse(pArrayJSON);
-	arry.add(productId);
-	var jsonStr = JSON.stringify(array);
-	client.set(username, jsonStr);		
+	console.log(req);
+//	console.log(req.param("productId"));
+	var productList;
+	client.get( username, function(err, reply) {
+		if (reply == null) {
+			var array = [];
+			array.push(productId);
+			productList = JSON.stringify(array);
+			client.set(username, productList);
+		} else {
+			var pArrayJSON = reply;
+			var array = JSON.parse(pArrayJSON);
+			array.push(productId);
+			productList = JSON.stringify(array);
+			client.set(username, productList);
+		}
+		res.send(productList);
+	});
 }
 
 
