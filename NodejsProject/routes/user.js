@@ -4,6 +4,19 @@ var ejs = require("ejs");
 var client = redis.createClient()
 
 
+
+function addProductToCard(req, res) {
+	var username = req.param("username");
+	var productId = req.param("productId");
+	
+	var pArrayJSON = client.get(username);
+	var array = JSON.parse(pArrayJSON);
+	arry.add(productId);
+	var jsonStr = JSON.stringify(array);
+	client.set(username, jsonStr);		
+}
+
+
 function redisTest() {
 	client.set('test', 'Jagruti');
 	console.log(client.get('test'));
@@ -31,6 +44,15 @@ function home(req, res) {
 	});
 }
 
+function charts(req, res) {
+	ejs.renderFile("./views/chart.ejs", function(err, result) {
+		if (!err) {
+			res.end(result);
+		}
+	});
+}
+
+
 function authenticate(req, res) {
 	var usernameGot = req.param("username");
 	var passwordGot = req.param("password");
@@ -51,3 +73,6 @@ exports.list = function(req, res){
 exports.authenticate = authenticate;
 exports.redisTest = redisTest; 
 exports.home = home;
+exports.signup = signup;
+exports.charts = charts;
+exports.addProductToCard = addProductToCard;
