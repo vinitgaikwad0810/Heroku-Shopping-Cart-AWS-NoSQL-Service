@@ -9,8 +9,6 @@ function addProductToCard(req, res) {
 	var username = req.param("username");
 	var productId = req.param("productId");
 	
-	console.log(req);
-//	console.log(req.param("productId"));
 	var productList;
 	client.get( username, function(err, reply) {
 		if (reply == null) {
@@ -29,6 +27,14 @@ function addProductToCard(req, res) {
 	});
 }
 
+
+function getShoppingCart(req, res) {
+	var username = req.param("username");	
+	
+	client.get( username, function(err, reply) {
+		res.send(reply);
+	});
+}
 
 function redisTest() {
 	client.set('test', 'Jagruti');
@@ -78,6 +84,10 @@ function authenticate(req, res) {
 	}
 }
 
+function deleteFromShoppingCart(req, res) {
+	console.log("Delete From Shopping Cart");
+}
+
 
 exports.list = function(req, res){
   res.send("respond with a resource");
@@ -89,3 +99,5 @@ exports.home = home;
 exports.signup = signup;
 exports.charts = charts;
 exports.addProductToCard = addProductToCard;
+exports.getShoppingCart = getShoppingCart;
+exports.deleteFromShoppingCart = deleteFromShoppingCart;
