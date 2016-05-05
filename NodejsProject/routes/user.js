@@ -3,8 +3,6 @@ var redis = require("redis")
 var ejs = require("ejs");
 var client = redis.createClient()
 
-
-
 function addProductToCard(req, res) {
 	var username = req.param("username");
 	var productId = req.param("productId");
@@ -27,10 +25,8 @@ function addProductToCard(req, res) {
 	});
 }
 
-
 function getShoppingCart(req, res) {
-	var username = req.param("username");	
-	
+	var username = req.param("username");		
 	client.get( username, function(err, reply) {
 		res.send(reply);
 	});
@@ -41,63 +37,31 @@ function redisTest() {
 	console.log(client.get('test'));
 }
 
-function saveSignupDetails(req, res) {	
-	client.set("username", req.param("username"));
-	client.set("password", req.param("password"));
-	
-}
-
-function signup(req, res) {
-	ejs.renderFile("./views/signup.ejs", function(err, result) {
-		if (!err) {
-			res.end(result);
-		}
-	});
-}
-
-function home(req, res) {
-	ejs.renderFile("./views/login.ejs", function(err, result) {
-		if (!err) {
-			res.end(result);
-		}
-	});
-}
-
-function charts(req, res) {
-	ejs.renderFile("./views/chart.ejs", function(err, result) {
-		if (!err) {
-			res.end(result);
-		}
-	});
-}
-
-
-function authenticate(req, res) {
-	var usernameGot = req.param("username");
-	var passwordGot = req.param("password");
-	
-	if (client.get("username") == usernameGot && client.get("password") == passwordGot) {
-		var json = "{'status', '200'}";
-		res.send(json);
-	} else {
-		res.send("{'status', '400'}");
-	}
-}
-
 function deleteFromShoppingCart(req, res) {
-	console.log("Delete From Shopping Cart");
+	var username = req.param("username");
+	var productId = req.param("productId");
+	var result;
+	var productList;
+	client.get( username, function(err, reply) {
+		if (reply == null) {
+			result = "{\"result\" : \"No Such USER ID\"}";
+		} else {
+			var pArrayJSON = reply;
+			var array = JSON.parse(pArrayJSON);
+			var index = array.indexOf(productId);
+			if (index > -1) {
+				array.splice(index, 1);
+			}			
+			productList = JSON.stringify(array);
+			client.set(username, productList);
+			result = productList;
+		}
+		res.send(result);
+	});
 }
 
 
-exports.list = function(req, res){
-  res.send("respond with a resource");
-};
-
-exports.authenticate = authenticate;
 exports.redisTest = redisTest; 
-exports.home = home;
-exports.signup = signup;
-exports.charts = charts;
 exports.addProductToCard = addProductToCard;
 exports.getShoppingCart = getShoppingCart;
 exports.deleteFromShoppingCart = deleteFromShoppingCart;
