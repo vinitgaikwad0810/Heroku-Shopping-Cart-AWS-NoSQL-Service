@@ -149,8 +149,8 @@ a.simpleCart_empty {
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     background-color: transparent;
-    border: 1px solid #816263;
-    color: #816263;
+    border: 1px solid #146DB5;
+    color: #146DB5;
 }
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
     color: #000;
@@ -173,7 +173,7 @@ ul.multi-column-dropdown h6 {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 10px;
-    color: #816263;
+    color: #146DB5;
 	    padding: 0;
 }
 .multi-column-dropdown li {
@@ -200,7 +200,7 @@ ul.multi-column-dropdown h6 {
 }
 .multi-column-dropdown li a:hover {
     text-decoration: none;
-    color: #816263;
+    color: #146DB5;
     background-color: #fff!important;
 }
 .dropdown-menu.columns-2 {
@@ -406,7 +406,7 @@ ul.multi-column-dropdown h6 {
     border: none;
 }
 .callbacks_here a:after{
-  background:#816263;
+  background:#146DB5;
 }
 .banner-info {
        margin-top: 150px;
@@ -421,7 +421,7 @@ ul.multi-column-dropdown h6 {
 .banner-info p {
   font-size: 20px;
   font-weight:300;
-  color:#816263;
+  color:#146DB5;
   margin: 20px 0;
 }
 .shop {
@@ -862,7 +862,7 @@ ul.tags_links li a {
 }
 ul.tags_links li a:hover{
 	text-decoration:none;
-	background:#816263;
+	background:#146DB5;
 	color:#fff;
 }
 .link1 {
@@ -896,7 +896,7 @@ ul.product-top-list li{
 	color:#777;
 }
 ul.product-top-list li a{
-	    color: #816263;
+	    color: #146DB5;
     font-size: 16px;
 }
 ul.product-top-list li span.act{
@@ -1186,7 +1186,7 @@ ul.product-list li a{
 	display: block;
 }
 ul.product-list li a:hover{
-	background:#816263;
+	background:#146DB5;
 	color:#fff;
 	padding:5px 2em;
 	transition:0.5s all;
@@ -1604,7 +1604,7 @@ ul.women_pagenation li.active a{
 	color:#fff;
 }
 ul.women_pagenation li a:hover{
-	background:#816263;
+	background:#146DB5;
 	color:#fff;
 }
 .login-page {
@@ -1642,7 +1642,7 @@ ul.women_pagenation li a:hover{
 }
 .reg p a{
 	text-decoration:none;
-	color:#816263;
+	color:#146DB5;
 }
 .reg p a:hover{
 	color: #000;
@@ -1687,7 +1687,7 @@ ul.women_pagenation li a:hover{
 }
 p.click a{
 	display: inline-block;
-	color:#816263;
+	color:#146DB5;
 }
 p.click a:hover{
 	color: #000;
@@ -1885,7 +1885,7 @@ div#myTabContent {
 	margin: 0 0 20px 0;
 	text-align: center;
 	font-size: 28px;
-	color: #816263;
+	color: #146DB5;
 	font-weight: 600;
 	padding:0;
 }
@@ -1921,7 +1921,7 @@ div#myTabContent {
 	font-weight: 600;
 }
 .cart-item-info h3 a {
-	color:#816263;
+	color:#146DB5;
     font-size: 18px;
 }
 .cart-item-info h3 span {
@@ -1979,7 +1979,7 @@ ul.qty li p {
     line-height: 20px;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    color: #816263;
+    color: #146DB5;
     cursor: default;
     font-size: 1.2em;
     font-weight: 600;
@@ -2049,7 +2049,7 @@ p.tab-text {
     color: #000;
 }
 .media-left.response-text-left h5 a:hover {
-    color: #816263;
+    color: #146DB5;
 }
 .media-left.response-text-left img {
     width: 100%;
@@ -2120,7 +2120,7 @@ p.right {
 	margin-top: 1px;
 }
 .purchase a:hover {
-	color:#816263;
+	color:#146DB5;
 }
 .social-icons {
 	float:left;
