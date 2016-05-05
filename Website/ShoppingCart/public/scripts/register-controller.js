@@ -15,7 +15,9 @@
 				data: {"fname" : $scope.fname,"lname" : $scope.lname, "uname" : $scope.email, "password" : $scope.password, "mobileno" : $scope.mobileno},
 				
 			}).success(function(data){
-				console.log(data);
+				window.alert("You are successfully Registered !!"+"\n"+"Please LogIn to continue shopping");
+			}).fail(function(data){
+				alert("Registration Failed !!");
 			})
 			
 		}
