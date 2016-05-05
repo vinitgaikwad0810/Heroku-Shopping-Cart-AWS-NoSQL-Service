@@ -24,6 +24,7 @@ app.use(function(req, res, next) {
 	});
 // get all users
 app.get('/listusers', function(req,res){
+	console.log("\n List all users request");
     connectionpool.getConnection(function(err, connection) {
         if (err) {
             console.error('CONNECTION error: ',err);
@@ -57,6 +58,7 @@ app.get('/listusers', function(req,res){
 
 // get by id
 app.get('/listusers/:id', function(req,res){
+	console.log("\n Listing user by id "+req.params.id);
 	connectionpool.getConnection(function(err, connection) {
         if (err) {
             console.error('CONNECTION error: ',err);
@@ -93,7 +95,8 @@ app.get('/listusers/:id', function(req,res){
 });
 
 // get password
-app.get('/getpassword/:uname', function(req,res){
+app.post('/getpassword', function(req,res){
+	console.log("\n Getting Password");
 	connectionpool.getConnection(function(err, connection) {
         if (err) {
             console.error('CONNECTION error: ',err);
@@ -103,36 +106,44 @@ app.get('/getpassword/:uname', function(req,res){
                 err:    err.code
             });
         } else {
-            connection.query('SELECT password from login WHERE username = '+connection.escape(req.params.uname), function(err, rows) {
-                if (err) {
-                    console.error(err);
-                    res.statusCode = 500;
-                    res.send({
-                        result: 'error',
-                        err:    err.code
-                    });
-                }else {
-                    if (rows.length === 0){
-                        res.statusCode = 204;
-                    } else {
+        	var data = req.body;
+                connection.query('Select password FROM login WHERE username =\"' + data.uname + '\"', function(err, result) {
+                    if (err) {
+                        console.error(err);
+                        res.statusCode = 500;
                         res.send({
-                            result: 'success',
-                            err:    '',
-                            json:   rows[0],
-                            length: 1
+                            result: 'error',
+                            err:    err.code
                         });
+                    } else {
+                    	if(result.length>0){
+	                    	if(result[0].password===data.password){
+	                        	res.send({
+	                            	result: 'success'
+	                        	});
+	                    	}else{
+	                    		res.send({
+	                            	result: 'error'
+	                        	});
+	                    	}
+	                    }
+                    	else{
+                            res.send({
+                                result: 'error',
+                            });
+                    	}
                     }
                     connection.release();
-                }
-            });
-        }
-    });
+                });
+            }
+	});
 });
 
 
 
 
 app.post('/newuserwithid', function(req,res){
+	console.log("\n Entering new user with id");
 	connectionpool.getConnection(function(err, connection) {
 		 if (err) {
             console.error('CONNECTION error: ',err);
@@ -166,6 +177,7 @@ app.post('/newuserwithid', function(req,res){
 });
 
 app.post('/newuser', function(req,res){
+	console.log("\n New User entry");
 	connectionpool.getConnection(function(err, connection) {
 		if (err) {
             console.error('CONNECTION error: ',err);
@@ -197,6 +209,7 @@ app.post('/newuser', function(req,res){
                 
 });
 app.put('/updatepass', function(req,res){
+	console.log("\n Updating Password");
 	connectionpool.getConnection(function(err, connection) {
         if (err) {
             console.error('CONNECTION error: ',err);
@@ -207,7 +220,7 @@ app.put('/updatepass', function(req,res){
             });
         } else {
         	var data = req.body;
-                connection.query('UPDATE login SET password= \"'+ data.password +'\" WHERE uname =\"' + data.uname + '\"', function(err, result) {
+                connection.query('UPDATE login SET password= \"'+ data.password +'\" WHERE username =\"' + data.uname + '\"', function(err, result) {
                     if (err) {
                         console.error(err);
                         res.statusCode = 500;
@@ -228,6 +241,7 @@ app.put('/updatepass', function(req,res){
 });
 
 app.put('/updatemobile', function(req,res){
+	console.log("\nUpdate mobile number");
 	connectionpool.getConnection(function(err, connection) {
         if (err) {
             console.error('CONNECTION error: ',err);
@@ -238,7 +252,7 @@ app.put('/updatemobile', function(req,res){
             });
         } else {
         	var data = req.body;
-                connection.query('UPDATE login SET mobilno= \"'+ data.mobileno +'\" WHERE uname =\"' + data.uname + '\"', function(err, result) {
+                connection.query('UPDATE login SET mobilno= \"'+ data.mobileno +'\" WHERE username =\"' + data.uname + '\"', function(err, result) {
                     if (err) {
                         console.error(err);
                         res.statusCode = 500;
@@ -259,6 +273,7 @@ app.put('/updatemobile', function(req,res){
 });
 
 app.put('/updatename', function(req,res){
+	console.log("\n Updating Name");
 	connectionpool.getConnection(function(err, connection) {
         if (err) {
             console.error('CONNECTION error: ',err);
@@ -269,7 +284,7 @@ app.put('/updatename', function(req,res){
             });
         } else {
         	var data = req.body;
-                connection.query('UPDATE login SET fname= \"'+ data.fname+'\" , lname=\"'+ data.lname +'\" WHERE uname =\"' + data.uname + '\"', function(err, result) {
+                connection.query('UPDATE login SET fname= \"'+ data.fname+'\" , lname=\"'+ data.lname +'\" WHERE username =\"' + data.uname + '\"', function(err, result) {
                     if (err) {
                         console.error(err);
                         res.statusCode = 500;
