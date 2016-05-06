@@ -14,14 +14,11 @@
 				url: '/login',
 				data: {"email" : $scope.email, "password" : $scope.password}
 			}).success(function(data){
-				if(data.result==="success"){
-					alert(data.result);
-									
+																
 					$window.location.assign('/getData');
 					alert("You have logged in successfully !!!");
-				}else{
-					alert("Error!! Invalid Username or Password");
-				}
+			}).error(function(data){
+				alert("Error while logging in!!!");
 			})
 			
 		}

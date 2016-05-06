@@ -54,9 +54,8 @@ app.get('/typography',index.typography);
 app.post('/registerUser');
 app.post('/signup', login.signup);
 app.post('/login',login.login);
-app.get('/login1',login.login);
 app.get('/getData',login.getData);
-app.get('/getData1',login.getData1)
+app.get('/getData1',login.getData1);
 app.use(function(req, res, next) {
 	  res.header("Access-Control-Allow-Origin", "*");
 	  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

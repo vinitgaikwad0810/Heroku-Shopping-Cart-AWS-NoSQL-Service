@@ -1,7 +1,7 @@
 /**
  * New node file
  */
-
+var ejs = require("ejs");
 var session=require('client-sessions');
 var request = require('sync-request');
 var https = require("https");
@@ -15,10 +15,26 @@ exports.signup = function(req,res){
 	var password=req.param("password");
 	var mobileno=req.param("mobileno");
 	
-
 	console.log("Username: " + email);
 	console.log("Password: " + password);
-	
+	if(req.session.email){
+		 ejs.renderFile('./views/products.ejs', {
+             email: req.session.email,
+             data : email,
+         }, function(err, result) {
+             // render on success
+             if (!err) {
+            	 console.log(result);
+                 res.end(result);
+             }
+             // render or error
+             else {
+                 res.end('huh');
+                 console.log(err);
+             }
+         });
+	}
+	else{
 	var httpcall = request('POST', 'http://52.37.104.158:8888/newuser', {
 		  json: { fname:fname,
 				  lname:lname,
@@ -29,42 +45,73 @@ exports.signup = function(req,res){
 		});
 		
 	console.log("Sync call in Signup");
-	console.log(httpcall.getBody('utf8'));		
-	//var userId1=req.session.email + "";
+	console.log(httpcall.getBody('utf8'));	
+	req.session.email = email;
+	var userId1=req.session.email + "";
 	var json_responses = {"Status" : "success","JsonData" : httpcall.getBody('utf8')};
 	res.send(json_responses);
-		 
-}
+	}	 
+};
 
 exports.login = function(req,res){
 	
 	var email=req.param("email");
 	var password=req.param("password");
 	
-	
-
 	console.log("Username: " + email);
 	console.log("Password: " + password);
-	
-	var httpcall = request('POST', 'http://52.37.104.158:8888/getpassword', {
-		  json: { uname: email,
-			  	  password:password,
-			  	 // userId:userId1
-			  }
-		});
+	if(req.session.email){
+		 ejs.renderFile('./views/products.ejs', {
+            email: req.session.email,
+            data : email,
+        }, function(err, result) {
+            // render on success
+            if (!err) {
+           	 
+                res.end(result);
+            }
+            // render or error
+            else {
+                res.end('huh');
+                console.log(err);
+            }
+        });
+	}else{
+		var httpcall = request('POST', 'http://52.37.104.158:8888/getpassword', {
+			  json: { uname: email,
+				  	  password:password,
+				  }
+			});
 		
-	console.log("Sync call in getData1");
-	console.log(httpcall.getBody('utf8'));		
-	//var userId1=req.session.email + "";
-	var json_responses = {"Status" : "success","JsonData" : httpcall.getBody('utf8')};
-	res.send(json_responses);
-		 
-}
+		console.log("Sync call in getData1");
+		console.log(httpcall.getBody('utf8'));		
+		req.session.email = email;
+		var json_responses = {"Status" : "success","JsonData" : httpcall.getBody('utf8')};
+		res.send(json_responses);
+	}
+	
+};
 
 
 exports.getData=function(req,res){
-	res.render("products");
-}
+	var email = req.session.email;
+	ejs.renderFile('./views/products.ejs', {
+        email: req.session.email,
+        data : email,
+    }, function(err, result) {
+        // render on success
+    	
+        if (!err) {
+       	 
+            res.end(result);
+        }
+        // render or error
+        else {
+            res.end('We are here');
+            console.log(err);
+        }
+    });
+};
 
 exports.getData1=function(req,res)
 {
