@@ -1,7 +1,7 @@
 
 var redis = require("redis")
 var ejs = require("ejs");
-var client = redis.createClient()
+var client = redis.createClient(6379, 'localhost', {no_ready_check: true})
 
 function addProductToCard(req, res) {
 	var username = req.param("username");
