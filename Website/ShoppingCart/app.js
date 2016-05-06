@@ -56,6 +56,7 @@ app.post('/signup', login.signup);
 app.post('/login',login.login);
 app.get('/getData',login.getData);
 app.get('/getData1',login.getData1);
+app.get('/logout',login.logout);
 app.use(function(req, res, next) {
 	  res.header("Access-Control-Allow-Origin", "*");
 	  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

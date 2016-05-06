@@ -17,24 +17,7 @@ exports.signup = function(req,res){
 	
 	console.log("Username: " + email);
 	console.log("Password: " + password);
-	if(req.session.email){
-		 ejs.renderFile('./views/products.ejs', {
-             email: req.session.email,
-             data : email,
-         }, function(err, result) {
-             // render on success
-             if (!err) {
-            	 console.log(result);
-                 res.end(result);
-             }
-             // render or error
-             else {
-                 res.end('huh');
-                 console.log(err);
-             }
-         });
-	}
-	else{
+	
 	var httpcall = request('POST', 'http://52.37.104.158:8888/newuser', {
 		  json: { fname:fname,
 				  lname:lname,
@@ -46,11 +29,11 @@ exports.signup = function(req,res){
 		
 	console.log("Sync call in Signup");
 	console.log(httpcall.getBody('utf8'));	
-	req.session.email = email;
-	var userId1=req.session.email + "";
+	//req.session.email = email;
+	//var userId1=req.session.email + "";
 	var json_responses = {"Status" : "success","JsonData" : httpcall.getBody('utf8')};
 	res.send(json_responses);
-	}	 
+ 
 };
 
 exports.login = function(req,res){
@@ -67,8 +50,7 @@ exports.login = function(req,res){
         }, function(err, result) {
             // render on success
             if (!err) {
-           	 
-                res.end(result);
+           	  res.end(result);
             }
             // render or error
             else {
@@ -112,6 +94,23 @@ exports.getData=function(req,res){
         }
     });
 };
+
+exports.logout = function(req, res) {
+    req.session.destroy();
+    res.redirect('/');
+    ejs.renderFile('./views/index.ejs', function(err, result) {
+        // render on success
+        if (!err) {
+            res.end(result);
+        }
+        // render or error
+        else {
+            res.end('An error occurred');
+            console.log(err);
+        }
+    });
+};
+
 
 exports.getData1=function(req,res)
 {
