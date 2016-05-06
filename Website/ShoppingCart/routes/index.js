@@ -21,6 +21,18 @@ exports.checkout = function(req, res){
 exports.products = function(req, res){
 	 res.render('products', { title: 'Express' });
 };
+exports.productsNew = function(req, res){
+	 res.render('productsNew', { title: 'Express' });
+};
+exports.MenProducts = function(req, res){
+	 res.render('MenProducts', { title: 'Express' });
+};
+exports.womenproducts = function(req, res){
+	 res.render('womenproducts', { title: 'Express' });
+};
+exports.kidproducts = function(req, res){
+	 res.render('kidproducts', { title: 'Express' });
+};
 exports.single = function(req, res){
 	 res.render('single', { title: 'Express' });
 };
