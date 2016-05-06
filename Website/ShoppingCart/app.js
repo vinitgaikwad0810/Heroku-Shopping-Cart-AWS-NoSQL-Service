@@ -13,7 +13,17 @@ var express = require('express')
   , register = require('./routes/register');
 var app = express();
 var bodyParser = require('body-parser');
+var session = require('client-sessions');
 // all environments
+
+app.use(session({   
+	  
+	cookieName: 'session',    
+	secret: 'shopping_cart',    
+	duration: 30 * 60 * 1000,    
+	activeDuration: 5 * 60 * 1000,  }));
+
+
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -42,7 +52,11 @@ app.get('/register',index.register);
 app.get('/single',index.single);
 app.get('/typography',index.typography);
 app.post('/registerUser');
+app.post('/signup', login.signup);
 app.post('/login',login.login);
+app.get('/login1',login.login);
+app.get('/getData',login.getData);
+app.get('/getData1',login.getData1)
 app.use(function(req, res, next) {
 	  res.header("Access-Control-Allow-Origin", "*");
 	  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
