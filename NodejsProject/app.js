@@ -3,6 +3,8 @@ var routes = require('./routes');
 var redis = require('./routes/cmpe_redis');
 var mysql = require('./routes/cmpe_mysql');
 var cassandra =require('./routes/cmpe_cassandra');
+var mongo = require('./routes/cmpe_mongodb');
+
 var index = require('./routes/index');
 var http = require('http');
 var path = require('path');
@@ -46,6 +48,8 @@ app.post('/getpassword', mysql.getpassword);
 
 app.post('/updatepass', mysql.updatepass);
 app.post('/deluserlist/:id', mysql.deleteUserlist);
+app.get('/getProducts/:productCatagory/:productSubCatagory', mongo.getProductCatagory);
+
 
 app.post('/log',cassandra.log);
 
