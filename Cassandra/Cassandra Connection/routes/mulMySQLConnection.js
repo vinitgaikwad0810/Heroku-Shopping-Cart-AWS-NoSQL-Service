@@ -119,7 +119,8 @@ app.post('/getpassword', function(req,res){
                     	if(result.length>0){
 	                    	if(result[0].password===data.password){
 	                        	res.send({
-	                            	result: 'success'
+	                            	result: 'success',
+	                            	uname: data.uname
 	                        	});
 	                    	}else{
 	                    		res.send({
