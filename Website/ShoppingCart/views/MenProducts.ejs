@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- cart -->
 <link rel="stylesheet" href="stylesheets/flexslider.css" type="text/css" media="screen" />
 </head>
-<body>
+<body ng-app="productsApp" ng-controller="products-controller">
 	<!-- header-section-starts -->
 	<div class="header">
 		<div class="header-top-strip">
@@ -101,9 +101,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				            <div class="col-sm-6">
 					            <ul class="multi-column-dropdown">
 									<h6>CLOTHING</h6>
-						            <li><a href="/MenProducts">Polos & Tees</a></li>
+									<form>
+						            <li><a href="/MenProducts" ng-model="Tees" ng-click="getProducts();">Tees</a></li>
 						            <li><a href="/MenProducts">Jeans</a></li>
-						            <li><a href="/MenProducts">Hoodies</a></li>
+						            <li><a href="/MenProducts">Hoodies</a></li></form>
 						            <!--<li><a href="/products">Jeans</a></li>
 						            <li><a href="/products">Shorts & 3/4th</a></li>
 						            <li><a href="/products">Formal Shirts</a></li>
@@ -705,5 +706,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  </div>
 		</div>
 		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="/scripts/products-controller.js"></script>
 </body>
 </html>
