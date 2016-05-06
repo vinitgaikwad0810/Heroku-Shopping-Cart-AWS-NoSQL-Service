@@ -2,6 +2,7 @@ var express = require('express');
 var routes = require('./routes');
 var redis = require('./routes/cmpe_redis');
 var mysql = require('./routes/cmpe_mysql');
+var cassandra =require('./routes/cmpe_cassandra');
 var index = require('./routes/index');
 var http = require('http');
 var path = require('path');
@@ -45,6 +46,8 @@ app.post('/getpassword', mysql.getpassword);
 
 app.post('/updatepass', mysql.updatepass);
 app.post('/deluserlist/:id', mysql.deleteUserlist);
+
+app.post('/log',cassandra.log);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
