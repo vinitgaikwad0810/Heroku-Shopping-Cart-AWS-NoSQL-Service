@@ -130,3 +130,5 @@ exports.getData1=function(req,res)
 		
 		 res.send(json_responses);
 }
+
+

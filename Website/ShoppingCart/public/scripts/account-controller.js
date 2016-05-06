@@ -2,13 +2,7 @@
 	var app = angular.module("accApp",[]);
 	
 	var accController = function($scope, $http,$window){
-		
-		
-		
-		
-		$scope.Login = function(){
-			console.log($scope.email, $scope.password);
-			
+		$scope.Login = function(){		
 			$http({
 				method: 'POST',
 				url: '/login',
