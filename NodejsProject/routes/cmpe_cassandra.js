@@ -1,70 +1,16 @@
-var log4js = require('log4js');
-log4js.configure({
-	  appenders: [ 
-	    { 
-	      type:     'log4js-appender-cassandra',
-	      nodes:    ['52.24.140.37'],
-	      username: 'root',
-	      password: 'root',
-	      keyspace: 'test',
-	      port:		7000,
-	      table:    'system_logs'
-	      }
-	    ]
-	});
 
-var logger = log4js.getLogger('syslog');
+var https = require("https");
+var request = require('sync-request');
 
 function log(req,res){
-	var data = req.body;
-	if(data.level==="trace"){
-		logger.trace(data.message);
-		res.statusCode = 204;
-		res.send({
-            result: 'success',
-        });
-	}
-	else if(data.level==="debug"){
-		logger.debug(data.message);
-		res.statusCode = 204;
-		res.send({
-            result: 'success',
-        });
-	}
-	else if(data.level==="info"){
-		logger.info(data.message);
-		res.statusCode = 204;
-		res.send({
-            result: 'success',
-        });
-	}
-	else if(data.level==="warn"){
-		logger.warn(data.message);
-		res.statusCode = 204;
-		res.send({
-            result: 'success',
-        });
-	}
-	else if(data.level==="error"){
-		logger.error(data.message);
-		res.statusCode = 204;
-		res.send({
-            result: 'success',
-        });
-	}
-	else if(data.level==="fatal"){
-		logger.fatal(data.message);
-		res.statusCode = 204;
-		res.send({
-            result: 'success',
-        });
-	}
-	else{
-		res.statusCode = 500;
-		res.send({
-            result: 'error',
-        });
-	}
+	console.log(req.body);	
+	var json = {
+		    "level" : "debug",
+		    "message" : "Hi"
+		};
+	
+	var httpcall = request('POST', 'http://52.24.140.37:8888/log', json);		
+	res.end();
  }
 
 exports.log=log;
