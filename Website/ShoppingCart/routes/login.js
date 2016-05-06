@@ -7,6 +7,7 @@ var request = require('sync-request');
 var https = require("https");
 var http = require("http");
 
+//REGISTER A USER
 exports.signup = function(req,res){
 	
 	var fname=req.param("fname");
@@ -29,13 +30,12 @@ exports.signup = function(req,res){
 		
 	console.log("Sync call in Signup");
 	console.log(httpcall.getBody('utf8'));	
-	//req.session.email = email;
-	//var userId1=req.session.email + "";
 	var json_responses = {"Status" : "success","JsonData" : httpcall.getBody('utf8')};
 	res.send(json_responses);
  
 };
 
+// LOGIN FOR A USER
 exports.login = function(req,res){
 	
 	var email=req.param("email");
@@ -54,7 +54,7 @@ exports.login = function(req,res){
             }
             // render or error
             else {
-                res.end('huh');
+                res.end('An Error Occurred !!');
                 console.log(err);
             }
         });
@@ -65,7 +65,7 @@ exports.login = function(req,res){
 				  }
 			});
 		
-		console.log("Sync call in getData1");
+		console.log("Sync call in Login");
 		console.log(httpcall.getBody('utf8'));		
 		req.session.email = email;
 		var json_responses = {"Status" : "success","JsonData" : httpcall.getBody('utf8')};
@@ -74,7 +74,7 @@ exports.login = function(req,res){
 	
 };
 
-
+// FETCH DATA AFTER LOGIN
 exports.getData=function(req,res){
 	var email = req.session.email;
 	ejs.renderFile('./views/products.ejs', {
@@ -89,12 +89,14 @@ exports.getData=function(req,res){
         }
         // render or error
         else {
-            res.end('We are here');
+            res.end('Error occurred while logging in !');
             console.log(err);
         }
     });
 };
 
+
+//LOGOUT A USER
 exports.logout = function(req, res) {
     req.session.destroy();
     res.redirect('/');
@@ -111,7 +113,7 @@ exports.logout = function(req, res) {
     });
 };
 
-
+// GET METHOD
 exports.getData1=function(req,res)
 {
 	var email=req.param("email");
