@@ -7,11 +7,13 @@ log4js.configure({
 	      username: 'root',
 	      password: 'root',
 	      keyspace: 'test',
+	      port:		7000,
 	      table:    'system_logs'
 	      }
 	    ]
 	});
 
+var logger = log4js.getLogger('syslog');
 
 function log(req,res){
 	var data = req.body;
