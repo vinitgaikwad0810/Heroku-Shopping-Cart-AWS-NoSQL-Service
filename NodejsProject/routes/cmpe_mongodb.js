@@ -20,6 +20,40 @@ function getProductCatagory(req, res) {
 	});
 }
 
+function getProductbyId(req,res) {
+
+
+MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  findProductById(db,req.params.product_id,function(err,data) {
+      if(data!=null){
+        console.log(data)
+     res.end(JSON.stringify((data),null,4));
+  }
+  });
+});
+}
+
+var findProductById = function(db,product_id,callback){
+
+
+   var cursor =db.collection('productCollection').find( {"product_id": Number(product_id)});
+   var doc_total = {};
+   var index = 0;
+   cursor.each(function(err, doc) {
+      assert.equal(err, null);
+      console.log("Doc is "+doc)
+      if (doc != null) {
+
+        callback(null,doc);
+      } else {
+      
+      }
+   });
+};
+
+
+
 function findProducts(db, productCatagory, productSubCatagory, callback) {
 	console.log ("productCatagory is "+productCatagory)
 	console.log ("productSubCatagory" + productSubCatagory)
@@ -39,4 +73,6 @@ function findProducts(db, productCatagory, productSubCatagory, callback) {
 };	
 
 
+
 exports.getProductCatagory = getProductCatagory;
+exports.getProductbyId = getProductbyId;

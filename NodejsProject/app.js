@@ -49,7 +49,10 @@ app.post('/getpassword', mysql.getpassword);
 
 app.post('/updatepass', mysql.updatepass);
 app.post('/deluserlist/:id', mysql.deleteUserlist);
+
 app.get('/getProducts/:productCatagory/:productSubCatagory', mongo.getProductCatagory);
+app.get('/getProductById/:product_id', mongo.getProductbyId);
+
 
 app.get('/getRecommendations/:product_id',neo4j.getRecommendations);
 
