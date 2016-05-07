@@ -70,8 +70,6 @@ app.get('/getData1',login.getData1);
 
 app.get('/logout',login.logout);
 
-
-
 app.get('/getProductsMenTees',productsrender.getProductsMenTees);
 app.get('/TeesProducts',productsrender.renderMenTeesPage);
 

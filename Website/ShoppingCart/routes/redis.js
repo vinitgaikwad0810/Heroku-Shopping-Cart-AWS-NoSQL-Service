@@ -10,7 +10,7 @@ exports.addProductIdToRedis = function(req, res) {
 	
 	var httpcall = request('POST', 'http://team4praj-env.us-west-2.elasticbeanstalk.com/addToCart', {
 		  json: { username: email,
-			  	  productId: product,
+			  	  productId: product
 			  }
 		});
 		

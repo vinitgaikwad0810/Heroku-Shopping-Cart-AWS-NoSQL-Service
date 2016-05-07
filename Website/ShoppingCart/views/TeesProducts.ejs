@@ -722,20 +722,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					$scope.data = "Jagruti";
 					$scope.products = result;
 				}).error(function(data){				
-				})	
-			
-			$scope.addToCart = function(var products){			
-				$http({
+				});	
+				
+				$scope.addToCart = function(products){			
+					$http({
 						method: 'POST',
 						url: '/addProductIdToRedis',
 						data : {
-						"productId" : products._id
+							"productId" : products._id
 						}
 					  }).success(function(data){	
 							console.log("Added Product" + products.productName);
 					  }).error(function(data){
 					})			
-				}			
+				};	
+						
 			}		
 		</script>
 </body>
