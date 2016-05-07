@@ -60,7 +60,22 @@ function deleteFromShoppingCart(req, res) {
 	});
 }
 
+function deleteAllCart(req, res) {
+	var username = req.param("username");
+	var result;
+	var productList;
+	client.get( username, function(err, reply) {
+		if (reply == null) {
+			result = "{\"result\" : \"No Such USER ID\"}";
+		} else {
+			client.set(username, "");
+			result = "";
+		}
+		res.send(result);
+	});
+}
 
+exports.deleteAllCart = deleteAllCart;
 exports.redisTest = redisTest; 
 exports.addProductToCard = addProductToCard;
 exports.getShoppingCart = getShoppingCart;

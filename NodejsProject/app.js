@@ -41,6 +41,7 @@ app.get('/', index.index);
 app.post('/addToCart', redis.addProductToCard);
 app.post('/getShoppingCart', redis.getShoppingCart);
 app.post('/deleteFromShoppingCart', redis.deleteFromShoppingCart);
+app.post('/deleteAllCart', redis.deleteAllCart);
 
 app.post('/newuser', mysql.newuser);
 app.post('/listusers', mysql.listusers);
