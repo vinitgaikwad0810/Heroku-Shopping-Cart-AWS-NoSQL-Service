@@ -33,6 +33,7 @@ var logger = log4js.getLogger('syslog');
 
 
 app.post('/log', function(req,res){
+	console.log(req);
 	var data = req.body;
 	if(data.level==="trace"){
 		logger.trace(data.message);
@@ -82,6 +83,15 @@ app.post('/log', function(req,res){
             result: 'error',
         });
 	}
+ });
+
+app.post('/userlog', function(req,res){
+	var data = req.body;
+	 var nodes=['localhost'],
+     username = 'root',
+     password = 'root',
+     keyspace = config.keyspace || 'log4js',
+     table    = config.table || 'log4js';
  });
 app.listen(8888);
 console.log('Cassandra Logger Listening on port 8888');
