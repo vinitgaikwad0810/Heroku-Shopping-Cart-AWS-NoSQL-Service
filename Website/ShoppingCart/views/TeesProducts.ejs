@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- cart -->
 <link rel="stylesheet" href="stylesheets/flexslider.css" type="text/css" media="screen" />
 </head>
-<body>
+<body ng-app="TeesProductsApp" ng-controller="Tees-products-controller">
 	<!-- header-section-starts -->
 	<div class="header">
 		<div class="header-top-strip">
@@ -54,7 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="/checkout">
 								<h3> <span class="simpleCart_total"> $0.00  </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)<img src="images/bag.png" alt=""></h3>
 							</a>	
-							<p style = "color: #FFFFFF">Name: <%= data[0].productName %> </p>
+							<p style = "color: #FFFFFF">Name: {{data}} </p>
 							<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
 							<div class="clearfix"> </div>
 						</div>
@@ -705,5 +705,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  </div>
 		</div>
 		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script>
+			var app = angular.module('TeesProductsApp', []);
+			app.controller("Tees-products-controller", teesController);
+
+			teesController.$inject = [ '$scope', '$http', '$window' ];
+			function teesController($scope, $http, $window) {
+				$scope.data = "";
+				
+				$http({
+					method: 'GET',
+					url: '/getProductsMenTees'
+				}).success(function(result){																				
+					$scope.data = result;
+					console.log("");
+				}).error(function(data){				
+				})		
+			}
+		</script>
 </body>
 </html>
