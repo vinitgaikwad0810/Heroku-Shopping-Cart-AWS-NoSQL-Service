@@ -4,6 +4,7 @@ var redis = require('./routes/cmpe_redis');
 var mysql = require('./routes/cmpe_mysql');
 var cassandra =require('./routes/cmpe_cassandra');
 var mongo = require('./routes/cmpe_mongodb');
+var neo4j = require('./routes/cmpe_recommendationServer')
 
 var index = require('./routes/index');
 var http = require('http');
@@ -50,6 +51,7 @@ app.post('/updatepass', mysql.updatepass);
 app.post('/deluserlist/:id', mysql.deleteUserlist);
 app.get('/getProducts/:productCatagory/:productSubCatagory', mongo.getProductCatagory);
 
+app.get('/getRecommendations/:product_id',neo4j.getRecommendations);
 
 app.post('/log',cassandra.log);
 
