@@ -67,7 +67,7 @@ function deleteAllCart(req, res) {
 	client.get( username, function(err, reply) {
 		if (reply == null) {
 			result = "{\"result\" : \"No Such USER ID\"}";
-		} else {
+		} else {			
 			client.set(username, "");
 			result = "";
 		}
