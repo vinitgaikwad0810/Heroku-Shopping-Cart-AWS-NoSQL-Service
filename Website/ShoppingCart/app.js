@@ -11,6 +11,8 @@ var express = require('express')
   , path = require('path')
   , login = require('./routes/login')
   , register = require('./routes/register');
+  var productsrender = require('./routes/productrendering');
+  
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('client-sessions');
@@ -50,11 +52,14 @@ app.get('/checkout',index.checkout);
 app.get('/products',index.products);
 app.get('/productsNew',index.productsNew);
 app.get('/MenProducts',index.MenProducts);
+app.get('/TeesProducts',index.TeesProducts);
 app.get('/womenproducts',index.womenproducts);
 app.get('/kidproducts',index.kidproducts);
 app.get('/register',index.register);
 app.get('/single',index.single);
 app.get('/typography',index.typography);
+app.post('/renderMenProducts',productsrender.renderMenProducts);
+app.get('/getMenProductPage',productsrender.getMenProductPage);
 app.post('/registerUser');
 app.post('/signup', login.signup);
 app.post('/login',login.login);

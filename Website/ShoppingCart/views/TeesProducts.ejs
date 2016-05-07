@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head >
 
 <title>Eshop a Flat E-Commerce Bootstrap Responsive Website Template | Products :: w3layouts</title>
 
@@ -38,15 +38,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- cart -->
 <link rel="stylesheet" href="stylesheets/flexslider.css" type="text/css" media="screen" />
 </head>
-<body ng-app="productsApp" ng-controller="products-controller">
+<body>
 	<!-- header-section-starts -->
 	<div class="header">
 		<div class="header-top-strip">
 			<div class="container">
 				<div class="header-top-left">
 					<ul>
-						<li><a href="/account"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
-						<li><a href="/register"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li>			
+						<li><a href="/logout"><span class="glyphicon glyphicon-user"> </span>Logout</a></li>
+						<!-- <li><a href="/register"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li> -->			
 					</ul>
 				</div>
 				<div class="header-right">
@@ -54,7 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="/checkout">
 								<h3> <span class="simpleCart_total"> $0.00  </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)<img src="images/bag.png" alt=""></h3>
 							</a>	
-						
+							<p style = "color: #FFFFFF">Name: <%= data[0].productName %> </p>
 							<p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
 							<div class="clearfix"> </div>
 						</div>
@@ -88,7 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men <b class="caret"></b></a>
 		            <ul class="dropdown-menu multi-column columns-3">
 			            <div class="row">
-				            <!--<div class="col-sm-4">
+				            <div class="col-sm-4">
 					            <ul class="multi-column-dropdown">
 									<h6>NEW IN</h6>
 						            <li><a href="/products">New In Clothing</a></li>
@@ -97,25 +97,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						            <li><a href="/products">New In Watches</a></li>
 						            <li><a href="/products">New In Grooming</a></li>
 					            </ul>
-				            </div>-->
-				            <div class="col-sm-6">
+				            </div>
+				            <div class="col-sm-4">
 					            <ul class="multi-column-dropdown">
 									<h6>CLOTHING</h6>
-									<form>
-									<input type="submit" value="Tees" ng-click="getProducts();">
-						            <!-- <li><a href="/TeesProducts" ng-click="getProducts();">Tees</a></li> -->
-						            <li><a href="/MenProducts">Jeans</a></li>
-						            <li><a href="/MenProducts">Hoodies</a></li></form>
-						            <!--<li><a href="/products">Jeans</a></li>
+						            <li><a href="/products">Polos & Tees</a></li>
+						            <li><a href="/products">Casual Shirts</a></li>
+						            <li><a href="/products">Casual Trousers</a></li>
+						            <li><a href="/products">Jeans</a></li>
 						            <li><a href="/products">Shorts & 3/4th</a></li>
 						            <li><a href="/products">Formal Shirts</a></li>
 						            <li><a href="/products">Formal Trousers</a></li>
 						            <li><a href="/products">Suits & Blazers</a></li>
 						            <li><a href="/products">Track Wear</a></li>
-						            <li><a href="/products">Inner Wear</a></li>-->
+						            <li><a href="/products">Inner Wear</a></li>
 					            </ul>
 				            </div>
-				            <!--	<div class="col-sm-4">
+				            <div class="col-sm-4">
 					            <ul class="multi-column-dropdown">
 									<h6>WATCHES</h6>
 						            <li><a href="/products">Analog</a></li>
@@ -123,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						            <li><a href="/products">Digital</a></li>
 						            <li><a href="/products">Watch Cases</a></li>
 					            </ul>
-				            </div>-->
+				            </div>
 							<div class="clearfix"></div>
 			            </div>
 		            </ul>
@@ -135,9 +133,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				            <div class="col-sm-4">
 					            <ul class="multi-column-dropdown">
 									<h6>NEW IN</h6>
-						            <li><a href="/womenproducts">New In Clothing</a></li>
-						            <li><a href="/womenproducts">New In Bags</a></li>
-						            <li><a href="/womenproducts">New In Shoes</a></li>
+						            <li><a href="/products">New In Clothing</a></li>
+						            <li><a href="/products">New In Bags</a></li>
+						            <li><a href="/products">New In Shoes</a></li>
 						            <li><a href="/products">New In Watches</a></li>
 						            <li><a href="/products">New In Beauty</a></li>
 					            </ul>
@@ -177,10 +175,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				            <div class="col-sm-6">
 					            <ul class="multi-column-dropdown">
 									<h6>NEW IN</h6>
-						            <li><a href="/kidproducts">New In Boys Clothing</a></li>
-						            <li><a href="/kidproducts">New In Girls Clothing</a></li>
-						            <li><a href="/kidproducts">New In Boys Shoes</a></li>
-						            <li><a href="/kidproducts">New In Girls Shoes</a></li>
+						            <li><a href="/products">New In Boys Clothing</a></li>
+						            <li><a href="/products">New In Girls Clothing</a></li>
+						            <li><a href="/products">New In Boys Shoes</a></li>
+						            <li><a href="/products">New In Girls Shoes</a></li>
 					            </ul>
 				            </div>
 				            <div class="col-sm-6">
@@ -707,7 +705,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		  </div>
 		</div>
 		</div>
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-		<script src="/scripts/products-controller.js"></script>
 </body>
 </html>

@@ -223,9 +223,126 @@ function deleteUserlist(req, res) {
     });	
 }
 
+
+function newcards(req, res) {
+	connectionpool.getConnection(function(err, connection) {
+        if (err) {
+            console.error('CONNECTION error: ',err);
+            res.statusCode = 503;
+            res.send({
+                result: 'error',
+                err:    err.code
+            });
+        } else {
+        	var data = req.body;
+                connection.query('Select id FROM login WHERE username =\"' + data.uname + '\"', function(err, output) {
+                    if (err) {
+                        console.error(err);
+                        res.statusCode = 500;
+                        res.send({
+                            result: 'error',
+                            err:    err.code
+                        });
+                    } else {
+                    	if(output.length>0){
+                    	connection.query('INSERT INTO carddetails(cardnumber, cardtype, uid) VALUES (' + data.cardnumber + ',\'' + data.cardtype + '\',' + output[0].id + ');', function(err, rows) {
+                            if (err) {
+                                console.error(err);
+                                res.statusCode = 500;
+                                res.send({
+                                    result: 'error',
+                                    err:    err.code
+                                });
+                            } else {
+                                 res.send({
+                                     result: 'success',
+                                     err: ''
+                                 });
+                            }
+                            connection.release();
+                    		});
+                    	}
+                    	else{
+                    		res.send({
+                                result: 'error',
+                                err:    ''
+                            });
+                    	}
+       }
+                
+});
+        }
+	});
+}
+
+function getcards(req, res) {
+	connectionpool.getConnection(function(err, connection) {
+        if (err) {
+            console.error('CONNECTION error: ',err);
+            res.statusCode = 503;
+            res.send({
+                result: 'error',
+                err:    err.code
+            });
+        } else {
+        	var data = req.body;
+                connection.query('Select id FROM login WHERE username =\"' + data.uname + '\"', function(err, result) {
+                    if (err) {
+                        console.error(err);
+                        res.statusCode = 500;
+                        res.send({
+                            result: 'error',
+                            err:    err.code
+                        });
+                    } else {
+                    	connection.query('Select cardnumber,cardtype FROM carddetails WHERE uid =\"' + result[0].id + '\"', function(err, rows) {
+                            if (err) {
+                                console.error(err);
+                                res.statusCode = 500;
+                                res.send({
+                                    result: 'error',
+                                    err:    err.code
+                                });
+                            } else {
+                            	if(rows.length>0){
+        	                    	var count=0;
+        	                    	var cards={};
+        	                    	var type={};
+                            		while(count<rows.length){
+                            			cards[count] = rows[count].cardnumber;
+                            			type[count] = rows[count].cardtype;
+                            			count++;
+                            		}
+                            		
+                            		var jsonArray = {};
+                            		jsonArray["result"] = "success";
+                            		jsonArray["card"] =cards;
+                            		jsonArray["type"] =type;
+                            		jsonArray["length"]=rows.length;
+    	                        	res.send(JSON.stringify(jsonArray));
+    	                    	
+        	                    }
+                            	else{
+                                    res.send({
+                                        result: 'error',
+                                    });
+                            	}
+                            }
+                            connection.release();              
+                    });
+                    }
+                
+            });
+        }
+	});
+}
+
+
 exports.listusers=listusers;
 exports.listusersID=listusersID;
 exports.getpassword=getpassword;
 exports.newuser=newuser;
 exports.updatepass=updatepass;
 exports.deleteUserlist=deleteUserlist;
+exports.newcards=newcards;
+exports.getcards=getcards;

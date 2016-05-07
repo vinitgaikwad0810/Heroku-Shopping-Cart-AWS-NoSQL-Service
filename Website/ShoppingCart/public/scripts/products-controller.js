@@ -21,15 +21,15 @@
 	
 	var productController = function($scope, $http){
 		$scope.getProducts = function(){
-			alert($scope.Tees);
+			
 			var subproduct = $scope.Tees;
 			$http({
 				method: 'POST',
 				url: '/renderMenProducts',
-				data: {"Tees":$scope.Tees}	
+				data: {}	
 			}).success(function(data){
 																
-					//$window.location.assign('/getData');
+					$window.location.assign('/getMenProductPage');
 					
 			}).error(function(data){
 				
