@@ -19,7 +19,7 @@ exports.signup = function(req,res){
 	console.log("Username: " + email);
 	console.log("Password: " + password);
 	
-	var httpcall = request('POST', 'http://52.37.104.158:8888/newuser', {
+	var httpcall = request('POST', 'http://team4praj-env.us-west-2.elasticbeanstalk.com/newuser', {
 		  json: { fname:fname,
 				  lname:lname,
 			  	  uname: email,
@@ -59,7 +59,7 @@ exports.login = function(req,res){
             }
         });
 	}else{
-		var httpcall = request('POST', 'http://52.37.104.158:8888/getpassword', {
+		var httpcall = request('POST', 'http://team4praj-env.us-west-2.elasticbeanstalk.com/getpassword', {
 			  json: { uname: email,
 				  	  password:password,
 				  }

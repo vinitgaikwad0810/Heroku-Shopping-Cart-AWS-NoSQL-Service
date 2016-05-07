@@ -27,6 +27,9 @@ exports.productsNew = function(req, res){
 exports.MenProducts = function(req, res){
 	 res.render('MenProducts', { title: 'Express' });
 };
+exports.TeesProducts = function(req, res){
+	 res.render('TeesProducts', { title: 'Express' });
+};
 exports.womenproducts = function(req, res){
 	 res.render('womenproducts', { title: 'Express' });
 };
