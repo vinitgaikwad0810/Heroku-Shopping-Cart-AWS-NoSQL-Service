@@ -10,6 +10,7 @@ var express = require('express')
   , index = require('./routes/index')
   , path = require('path')
   , login = require('./routes/login')
+  , redis = require('./routes/redis')
   , register = require('./routes/register');
   var productsrender = require('./routes/productrendering');
   
@@ -70,8 +71,12 @@ app.get('/getData1',login.getData1);
 app.get('/logout',login.logout);
 
 
+
 app.get('/getProductsMenTees',productsrender.getProductsMenTees);
 app.get('/TeesProducts',productsrender.renderMenTeesPage);
+
+
+app.post('/addProductIdToRedis',redis.addProductIdToRedis);
 
 app.use(function(req, res, next) {
 	  res.header("Access-Control-Allow-Origin", "*");

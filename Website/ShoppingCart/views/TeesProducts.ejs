@@ -311,15 +311,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							 <div class="view view-first">
 					   		  <div class="inner_content clearfix">
 								<div class="product_image">
-									<img src="images/p1.jpg" class="img-responsive" alt=""/>
+									<img ng-src="{{products[0].imageUrl}}" class="img-responsive" alt=""/>
 									<div class="mask">
 			                       		<div class="info">Quick View</div>
 					                  </div>
 									<div class="product_container">
 									   <div class="cart-left">
-										 <p class="title">perspiciatis</p>
+										 <p class="title">{{products[0].productName}}</p>
 									   </div>
-									   <div class="pricey"><span class="item_price">$259.00</span></div>
+									   <div class="pricey"><span class="item_price">${{products[0].price}}</span></div>
 									   <div class="clearfix"></div>
 								     </div>		
 								  </div>
@@ -327,9 +327,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		                      </div>
 		                    </a>
 							<div class="cbp-vm-details">
-								Silver beet shallot wakame tomatillo salsify mung bean beetroot groundnut.
+								{{products[0].productDescription}}
 							</div>
-							<a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
+							<a class="cbp-vm-icon cbp-vm-add item_add" href="#" ng-click="addToCart(products[0]);">Add to cart</a>
 							</div>
 						</li>
 						<li>
@@ -713,16 +713,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			teesController.$inject = [ '$scope', '$http', '$window' ];
 			function teesController($scope, $http, $window) {
 				$scope.data = "";
-				
+				$scope.products = "";
 				$http({
 					method: 'GET',
 					url: '/getProductsMenTees'
 				}).success(function(result){																				
-					$scope.data = result;
-					console.log("");
+					// $scope.data = result;
+					$scope.data = "Jagruti";
+					$scope.products = result;
 				}).error(function(data){				
-				})		
-			}
+				})	
+			
+			$scope.addToCart = function(var products){			
+				$http({
+						method: 'POST',
+						url: '/addProductIdToRedis',
+						data : {
+						"productId" : products._id
+						}
+					  }).success(function(data){	
+							console.log("Added Product" + products.productName);
+					  }).error(function(data){
+					})			
+				}			
+			}		
 		</script>
 </body>
 </html>
