@@ -1,7 +1,7 @@
 var mysql  = require('mysql');
 
 var connectionpool = mysql.createPool({
-        host     : '52.37.104.158',
+        host     : 'internal-Team4-MySQL-1663156986.us-west-2.elb.amazonaws.com',
         user     : 'user',
         password : 'password',
         database : 'test',

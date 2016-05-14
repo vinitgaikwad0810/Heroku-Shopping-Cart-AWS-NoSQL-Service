@@ -19,7 +19,7 @@ function log(req,res){
 	json1["level"] = data.level;
 	json1["message"] = data.message;	
 	
-	var httpcall = request('POST', 'http://52.24.140.37:8888/log', {json: { data :JSON.stringify(json1)}});		
+	var httpcall = request('POST', 'http://internal-Team4Cassandra-414393940.us-west-2.elb.amazonaws.com:8888/log', {json: { data :JSON.stringify(json1)}});		
 	res.end();
 	
  }

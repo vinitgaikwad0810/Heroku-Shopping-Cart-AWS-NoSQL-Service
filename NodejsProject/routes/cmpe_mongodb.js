@@ -1,7 +1,7 @@
 var fs = require("fs");
 var assert = require('assert');
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://52.39.77.65:27017/productcatalog';
+var url = 'mongodb://internal-Team4-Mongo-1933546881.us-west-2.elb.amazonaws.com:27017/productcatalog?readPreference=secondary';
 
 var ObjectId = require('mongodb').ObjectID;
 

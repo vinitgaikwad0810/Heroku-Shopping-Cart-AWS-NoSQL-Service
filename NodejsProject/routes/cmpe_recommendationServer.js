@@ -9,7 +9,7 @@ map[2] = "17";
 map[3] = "18";
 
 //Define your host and port. This is where your database is running. Here it’s on localhost.
-var host = '52.39.77.65',
+var host = 'internal-Team4-Neo4j-2136233412.us-west-2.elb.amazonaws.com',
   port = 7474;
 
 //This is the url where we will POST our data to fire the cypher query. This is specified in Neo4j docs.
