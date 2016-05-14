@@ -1,7 +1,7 @@
 
 var redis = require("redis")
 var ejs = require("ejs");
-var client = redis.createClient(6379, '52.33.108.11', {no_ready_check: true})
+var client = redis.createClient(6379, 'team4jr.8pcr77.ng.0001.usw2.cache.amazonaws.com', {no_ready_check: true})
 
 function addProductToCard(req, res) {
 	var username = req.param("username");
@@ -67,9 +67,8 @@ function deleteAllCart(req, res) {
 	client.get( username, function(err, reply) {
 		if (reply == null) {
 			result = "{\"result\" : \"No Such USER ID\"}";
-		} else {			
-			client.set(username, "");
-			result = "";
+		} else {		
+			client.del(username,function(err,count){});
 		}
 		res.send(result);
 	});
