@@ -25,6 +25,6 @@ Middleware API's handle
 
 
 
-![alt text](https://github.com/vinitgaikwad0810/Shopping-Cart-Service/blob/master/Web%20Front%20End/Overall%20archi.png" Logo Title Text 1")
+![alt text](https://github.com/vinitgaikwad0810/Shopping-Cart-Service/blob/master/Web%20Front%20End/Overall%20archi.png "Logo Title Text 1")
 
 
